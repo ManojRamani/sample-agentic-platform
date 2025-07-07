@@ -13,14 +13,17 @@ inference_config:
 
 # List of folders to analyze
 folders_to_analyze:
-  - "labs/module1"
-  - "labs/module2"
-  - "labs/module3"
-  - "labs/module4"
-  - "labs/module5"
-  - "k8s"
-  - "infrastructure"
-  - "deploy"
+  # - "labs/module1"
+  # - "labs/module2"
+  # - "labs/module3"
+  # - "labs/module4"
+  # - "labs/module5"
+  # - "k8s"
+  # - "infrastructure"
+  # - "deploy"
+  - "script"
+  - "src"
+  - "tests"
  
 # Output configuration
 output:
