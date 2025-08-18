@@ -314,4 +314,4 @@ To contribute to this script:
 
 ## License
 
-This script is released under the same license as the Amazon Bedrock Workshop repository.
+This library is licensed under the MIT-0 License. See the LICENSE file.

@@ -472,10 +472,10 @@ def get_folder_content_summary(folder_name, config=None):
                 tokens_used += code_tokens
                     
     # Add token usage information
-    content_summary += f"\n## Token Usage Information\n\n"
-    content_summary += f"- Estimated tokens used in this content summary: ~{tokens_used} tokens\n"
-    content_summary += f"- Token budget allocated: {max_tokens} tokens\n"
-    content_summary += f"- Percentage of budget used: {(tokens_used / max_tokens) * 100:.1f}%\n\n"
+    # content_summary += f"\n## Token Usage Information\n\n"
+    # content_summary += f"- Estimated tokens used in this content summary: ~{tokens_used} tokens\n"
+    # content_summary += f"- Token budget allocated: {max_tokens} tokens\n"
+    # content_summary += f"- Percentage of budget used: {(tokens_used / max_tokens) * 100:.1f}%\n\n"
     
     return content_summary
 
