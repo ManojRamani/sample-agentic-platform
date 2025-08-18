@@ -10,8 +10,14 @@
 .PHONY: retrieval-gateway
 .PHONY: knowledge-base
 .PHONY: pydanticai-agent
+.PHONY: agentic_chat
 # Makefile for running servers locally with UV and the correct environment variables.
 # Make sure to fill in your .env file with the correct values.
+
+agentic-chat:
+	cd src && \
+	uv run --env-file agentic_platform/agent/agentic_chat/.env -- uvicorn agentic_platform.agent.agentic_chat.server:app --reload --port 8003
+
 
 langgraph-chat:
 	cd src && \

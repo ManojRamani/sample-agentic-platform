@@ -55,6 +55,9 @@ resource "aws_ssm_parameter" "agentic_platform_config" {
     COGNITO_PLATFORM_USER_GROUP_NAME  = aws_cognito_user_group.platform_user.name
     OAUTH_TOKEN_ENDPOINT              = "${var.use_custom_domain && var.domain_name != "" ? "https://${var.environment}.${var.domain_name}" : "https://${aws_cognito_user_pool_domain.main.domain}.auth.${var.aws_region}.amazoncognito.com"}/oauth2/token"
     M2M_CREDENTIALS_SECRET_ARN        = aws_secretsmanager_secret.m2m_credentials.arn
+
+    # LiteLLM values
+    LITELLM_CONFIG_SECRET_ARN         = aws_secretsmanager_secret.litellm_secret.arn
     
     # Database values
     PG_WRITER_ENDPOINT            = aws_rds_cluster.postgres.endpoint

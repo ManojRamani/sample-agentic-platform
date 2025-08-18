@@ -47,19 +47,9 @@ ingress:
 serviceAccount:
   name: "memory-gateway-sa"
   create: true
-  irsaRoleName: "memory-gateway-role"  # Role name without prefix
+  irsaConfigKey: MEMORY_GATEWAY_ROLE_ARN
 
-# Specify which keys this service needs from the central config
-configKeys:
-  - PG_WRITER_ENDPOINT
-  - PG_READER_ENDPOINT
-  - PG_PORT
-  - PG_DATABASE
-  - PG_USER
-  - PG_READ_ONLY_USER
-  - PG_PASSWORD_SECRET_ARN
-  - COGNITO_USER_POOL_ID
-  - COGNITO_USER_CLIENT_ID
-  - COGNITO_M2M_CLIENT_ID
-  - AWS_DEFAULT_REGION
-  - ENVIRONMENT
+# Configuration defaults that will be added to the configmap
+# Provider: bedrock_agentcore or postgres
+configDefaults:
+  MEMORY_PROVIDER: "bedrock_agentcore"

@@ -1,0 +1,64 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: {{ include "litellm.fullname" . }}
+  namespace: {{ include "litellm.namespace" . }}
+  labels:
+    app: {{ include "litellm.name" . }}
+spec:
+  replicas: {{ .Values.replicaCount | default 1 }}
+  selector:
+    matchLabels:
+      app: {{ include "litellm.name" . }}
+  template:
+    metadata:
+      labels:
+        app: {{ include "litellm.name" . }}
+      annotations:
+        timestamp: "{{ now | unixEpoch }}"
+    spec:
+      serviceAccountName: {{ .Values.serviceAccount.name }}
+      containers:
+        - name: {{ .Chart.Name }}
+          image: {{ .Values.image.repository }}:{{ .Values.image.tag }}
+          imagePullPolicy: {{ .Values.image.pullPolicy | default "IfNotPresent" }}
+          ports:
+            - containerPort: {{ .Values.service.targetPort | default 4000 }}
+          envFrom:
+            - secretRef:
+                name: litellm-secret
+            - configMapRef:
+                name: agentic-platform-config
+
+          # We need to modify the root path b/c ALB doesn't support re-write.
+          env:
+            - name: SERVER_ROOT_PATH
+              value: "/api/litellm"
+          volumeMounts:
+            - name: config-volume
+              mountPath: /app/config.yaml
+              subPath: config.yaml
+          # HTTP health checks using the correct LiteLLM endpoint
+          livenessProbe:
+            httpGet:
+              path: /health/liveliness
+              port: {{ .Values.service.targetPort | default 4000 }}
+            initialDelaySeconds: 30
+            periodSeconds: 10
+          readinessProbe:
+            httpGet:
+              path: /health/liveliness
+              port: {{ .Values.service.targetPort | default 4000 }}
+            initialDelaySeconds: 60  # Increased from 5s to allow Prisma generation to complete
+            periodSeconds: 10        # Increased from 5s to reduce probe frequency
+          resources:
+            {{- toYaml .Values.resources | nindent 12 }}
+          args:
+            - "--config"
+            - "/app/config.yaml"
+            - "--port"
+            - "{{ .Values.service.targetPort | default 4000 }}"
+      volumes:
+        - name: config-volume
+          configMap:
+            name: {{ include "litellm.fullname" . }}-config

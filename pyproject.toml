@@ -21,7 +21,7 @@ dependencies = [
     "langchain-core>=0.3.50",
     "nest-asyncio>=1.6.0",
     "langchain-mcp-adapters>=0.0.7",
-    "pydantic-ai-slim[bedrock,duckduckgo,mcp,tavily]>=0.2.14",
+    "pydantic-ai-slim[bedrock,mcp,tavily,openai]>=0.2.14",
     "python-dotenv>=1.1.0",
     "tavily-python>=0.5.4",
     "ipython>=9.0.2",
@@ -42,8 +42,10 @@ dependencies = [
     "litellm>=1.66.2",
     "pydantic-evals>=0.2.4",
     "ragas>=0.2.14",
-    "strands-agents>=0.1.6",
+    "strands-agents[litellm,openai]>=1.0.1",
+    "strands-agents-tools>=0.1.9",
     "psycopg2-binary>=2.9.10",
+    "langchain-litellm>=0.2.2",
 ]
 
 [tool.uv.workspace]

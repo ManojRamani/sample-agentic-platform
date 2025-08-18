@@ -16,7 +16,7 @@ from datetime import datetime
 from uuid import uuid4
 
 from agentic_platform.core.models.streaming_models import (
-    StreamEvent, TextDeltaEvent, TextDoneEvent, ThinkingEvent,
+    StreamEvent, TextDeltaEvent, 
     ToolCallEvent, ToolResultEvent, ErrorEvent, DoneEvent,
     StreamEventType
 )
@@ -142,10 +142,18 @@ class PydanticAIStreamingEventConverter:
         
         # Handle final data/output - this should be TextDoneEvent since it's the final complete response
         elif 'data' in event and event['data'].get('output'):
-            events.append(TextDoneEvent(
+            events.append(TextDeltaEvent(
                 session_id=session_id,
                 text=event['data']['output'],
                 metadata={'is_final': True}
+            ))
+
+            events.append(DoneEvent(
+                session_id=session_id,
+                metadata={
+                    'timestamp': datetime.now().timestamp(),
+                    'is_final': True
+                }
             ))
         
         return events

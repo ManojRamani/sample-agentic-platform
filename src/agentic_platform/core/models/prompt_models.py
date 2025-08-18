@@ -3,7 +3,7 @@ from typing import Dict, Any
 
 from pydantic import BaseModel, Field
 
-HAIKU_MODEL_ID = "us.anthropic.claude-3-5-haiku-20241022-v1:0"
+HAIKU_MODEL_ID = "us.anthropic.claude-3-haiku-20240307-v1:0"
 class BasePrompt(BaseModel):
     """
     A streamlined base class for creating prompts with system and user components.

@@ -47,14 +47,19 @@ ingress:
 serviceAccount:
   name: ""
   create: true
+  irsaConfigKey: "AGENT_ROLE_ARN"
 
+# Default / empty role for the agents.
+irsaConfigKey: AGENT_ROLE_ARN
+
+# Agent secret configuration - can be set directly or pulled from config map
+agentSecret:
+  # Option 1: Set the secret ARN directly
+  arn: ""
+  # Option 2: Use a config key from the central config map (recommended)
+  configKey: "AGENT_LITELLM_SECRET_ARN"
 
 # Specify which keys this service needs from the central config
-configKeys:
-  - AWS_DEFAULT_REGION
-  - COGNITO_USER_CLIENT_ID
-  - COGNITO_M2M_CLIENT_ID
-  - COGNITO_USER_POOL_ID
 
 # Default values if keys aren't found in central config
 configDefaults:

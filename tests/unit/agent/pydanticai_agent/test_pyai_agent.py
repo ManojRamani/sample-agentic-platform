@@ -1,4 +1,5 @@
 import pytest
+import os
 from unittest.mock import Mock, MagicMock, patch, AsyncMock
 from typing import List
 
@@ -26,6 +27,9 @@ def mock_memory_client():
 def mock_llm_gateway_client():
     """Mock the LLM gateway client"""
     with patch('agentic_platform.agent.pydanticai_agent.pyai_agent.LLMGatewayClient') as mock_client:
+        # Mock the OpenAI client that would be returned
+        mock_openai_client = Mock()
+        mock_client.get_openai_client.return_value = mock_openai_client
         yield mock_client
 
 
@@ -33,8 +37,8 @@ def mock_llm_gateway_client():
 def mock_pydantic_ai_components():
     """Mock PydanticAI components"""
     with patch('agentic_platform.agent.pydanticai_agent.pyai_agent.Agent') as mock_agent_class, \
-         patch('agentic_platform.agent.pydanticai_agent.pyai_agent.BedrockConverseModel') as mock_model, \
-         patch('agentic_platform.agent.pydanticai_agent.pyai_agent.BedrockProvider') as mock_provider:
+         patch('agentic_platform.agent.pydanticai_agent.pyai_agent.OpenAIModel') as mock_model, \
+         patch('agentic_platform.agent.pydanticai_agent.pyai_agent.OpenAIProvider') as mock_provider:
         
         # Setup mock agent instance
         mock_agent_instance = Mock()
@@ -60,9 +64,6 @@ def mock_converter():
 @pytest.fixture
 def pyai_agent_with_mocks(mock_llm_gateway_client, mock_pydantic_ai_components):
     """Create PydanticAI agent with all dependencies mocked"""
-    mock_bedrock_client = Mock()
-    mock_llm_gateway_client.get_bedrock_client.return_value = mock_bedrock_client
-    
     agent = PyAIAgent(tools=[mock_tool_function])
     return agent
 
@@ -72,16 +73,14 @@ class TestPyAIAgent:
     
     def test_agent_initialization(self, mock_llm_gateway_client, mock_pydantic_ai_components):
         """Test that PydanticAI agent initializes correctly"""
-        # Setup mocks
-        mock_bedrock_client = Mock()
-        mock_llm_gateway_client.get_bedrock_client.return_value = mock_bedrock_client
-        
         # Create agent
         agent = PyAIAgent(tools=[mock_tool_function])
         
         # Verify initialization
         assert isinstance(agent.conversation, SessionContext)
-        mock_llm_gateway_client.get_bedrock_client.assert_called_once()
+        mock_llm_gateway_client.get_openai_client.assert_called_once()
+        mock_pydantic_ai_components['provider'].assert_called_once()
+        mock_pydantic_ai_components['model'].assert_called_once()
         mock_pydantic_ai_components['agent_class'].assert_called_once()
         mock_pydantic_ai_components['agent_instance'].tool_plain.assert_called_once_with(mock_tool_function)
     

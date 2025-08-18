@@ -19,6 +19,7 @@ class StreamEventType(str, Enum):
     TEXT_DELTA = "text_delta"                   # A chunk of text content
     THINKING_DELTA = "thinking_delta"           # Agent's internal reasoning
     TOOL_CALL = "tool_call"                     # Tool being called
+    TOOL_CALL_DELTA = "tool_call_delta"         # Tool call delta"
     TOOL_RESULT = "tool_result"                 # Result from tool
     ERROR = "error"                             # Error occurred
     DONE = "done"                               # Stream complete
@@ -40,11 +41,12 @@ class TextDeltaEvent(BaseStreamEvent):
 class ContentBlockStart(BaseStreamEvent):
     """Event signaling text content is complete"""
     type: Literal[StreamEventType.CONTENT_BLOCK_START] = StreamEventType.CONTENT_BLOCK_START
-    text: str  # The complete text
+    content_type: Literal["text", "tool_call", "tool_result"]
+    content_block: Dict[str, Any]
+
 class ContentBlockEnd(BaseStreamEvent):
     """Event signaling text content is complete"""
     type: Literal[StreamEventType.CONTENT_BLOCK_END] = StreamEventType.CONTENT_BLOCK_END
-    text: str  # The complete text
 class ThinkingDeltaEvent(BaseStreamEvent):
     """Event containing agent's thinking process"""
     type: Literal[StreamEventType.THINKING_DELTA] = StreamEventType.THINKING_DELTA
@@ -54,6 +56,11 @@ class ToolCallEvent(BaseStreamEvent):
     """Event containing a tool call"""
     type: Literal[StreamEventType.TOOL_CALL] = StreamEventType.TOOL_CALL
     tool_call: ToolCall  # Reuse our ToolCall type
+
+class ToolCallDeltaEvent(BaseStreamEvent):
+    """Event containing a tool call"""
+    type: Literal[StreamEventType.TOOL_CALL_DELTA] = StreamEventType.TOOL_CALL_DELTA
+    arguments_delta: str
 
 class ToolResultEvent(BaseStreamEvent):
     """Event containing a tool result"""
@@ -77,6 +84,7 @@ StreamEvent = Annotated[
         TextDeltaEvent,
         ThinkingDeltaEvent,
         ToolCallEvent,
+        ToolCallDeltaEvent,
         ToolResultEvent,
         ErrorEvent,
         DoneEvent

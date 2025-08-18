@@ -1,5 +1,0 @@
-# REPLACE WITH YOUR OWN VALUES and copy to aws-overlay-values.yaml
-aws:
-  account: ""
-  region: ""
-  stackPrefix: ""  # No trailing dash. Use the same prefix you used to deploy the infrastructure.

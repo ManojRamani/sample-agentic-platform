@@ -1,10 +1,10 @@
 # nosemgrep
 
 # This docker-compose file is for local development purposes only
-# It should be deployed in any way shape or form into your account.
+# It should not be deployed in any way shape or form into your account.
 
 services:
-  db:  # Service name
+  postgres:  # Service name
     # If you don't use this image, you have to create the docker build yourself which is not fun..
     image: pgvector/pgvector:pg16 
     restart: always
@@ -43,49 +43,23 @@ services:
       timeout: 5s
       retries: 5
 
-  dynamodb-local:
-    image: amazon/dynamodb-local
-    container_name: dynamodb-local
+  # Lite LLM Gateway
+  litellm:
+    image: ghcr.io/berriai/litellm:main-latest
     ports:
-      - "8351:8000"  # Map 8351 externally to DynamoDB's 8000 internally
-    command: "-jar DynamoDBLocal.jar -sharedDb -dbPath /data"
-    working_dir: /home/dynamodblocal
+      - "4000:4000"
     volumes:
-      - dynamodb_data:/data  # Mount the volume
-    security_opt:
-      - no-new-privileges:true
-    read_only: true
-    tmpfs:
-      - /tmp
-    healthcheck:
-      test: ["CMD-SHELL", "curl -f http://localhost:8000/shell/ || exit 1"]
-      interval: 5s
-      timeout: 5s
-      retries: 5
-
-  # LLM Gateway Service
-  llm-gateway:
-    build:
-      context: .
-      dockerfile: docker/llm-gateway/Dockerfile
-    ports:
-      - "4000:8000"
-    env_file:
-      - tests/integ/.env.llm-gateway
-    environment:
-      # Override specific values for local Docker setup
-      - PG_CONNECTION_URL=db:5432
-      - REDIS_URL=redis://redis:6379
-      - REDIS_HOST=redis
-      - REDIS_PORT=6379
-    volumes:
-      # Mount AWS credentials and config for automatic credential discovery
+      - ./src/agentic_platform/service/litellm_gateway/litellm_config.yaml:/app/config.yaml
       - ${HOME}/.aws:/home/appuser/.aws:ro
+    env_file:
+      - .env
+    environment:
+      - LITELLM_MASTER_KEY=${LITELLM_MASTER_KEY}
+      - DATABASE_URL=${LITELLM_DATABASE_URL}
+    command: ["--config", "/app/config.yaml", "--port", "4000"]
     depends_on:
-      - db
+      - postgres
       - redis
-      - dynamodb-local
-    restart: unless-stopped
 
   # Memory Gateway Service
   memory-gateway:
@@ -95,32 +69,31 @@ services:
     ports:
       - "4001:8000"
     env_file:
-      - tests/integ/.env.memory-gateway
+      - .env
     environment:
       # Override specific values for local Docker setup
-      - PG_CONNECTION_URL=db:5432
+      - PG_CONNECTION_URL=postgres:5432
     volumes:
       # Mount AWS credentials and config for automatic credential discovery
       - ${HOME}/.aws:/home/appuser/.aws:ro
     depends_on:
-      - db
+      - postgres
     restart: unless-stopped
 
-  # Retrieval Gateway Service
-  retrieval-gateway:
-    build:
-      context: .
-      dockerfile: docker/retrieval-gateway/Dockerfile
-    ports:
-      - "4002:8000"
-    env_file:
-      - tests/integ/.env.retrieval-gateway
-    volumes:
-      # Mount AWS credentials and config for automatic credential discovery
-      - ${HOME}/.aws:/home/appuser/.aws:ro
-    restart: unless-stopped
+  # # Retrieval Gateway Service
+  # retrieval-gateway:
+  #   build:
+  #     context: .
+  #     dockerfile: docker/retrieval-gateway/Dockerfile
+  #   ports:
+  #     - "4002:8000"
+  #   env_file:
+  #     - tests/integ/.env.retrieval-gateway
+  #   volumes:
+  #     # Mount AWS credentials and config for automatic credential discovery
+  #     - ${HOME}/.aws:/home/appuser/.aws:ro
+  #   restart: unless-stopped
 
 volumes:
   postgres_data:
   redis_data:
-  dynamodb_data:  # Add the volume definition

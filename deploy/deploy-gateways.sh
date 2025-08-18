@@ -2,7 +2,6 @@
 
 # Array of gateway services
 GATEWAYS=(
-    "llm-gateway"
     "memory-gateway"
     "retrieval-gateway"
 )

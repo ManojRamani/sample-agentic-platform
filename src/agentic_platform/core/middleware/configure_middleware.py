@@ -21,7 +21,9 @@ def configuration_server_middleware(app: FastAPI, path_prefix: str, excluded_pat
     # Adds the token and auth results to the context variable for access throughout the invocation.
     app.add_middleware(RequestContextMiddleware)
     # Auth results are stored in the request state.
-    app.add_middleware(AuthMiddleware, excluded_paths=excluded_paths)
+
+    if ENVIRONMENT != 'local':
+        app.add_middleware(AuthMiddleware, excluded_paths=excluded_paths)
 
     # Converts things like /llm-gateway/model/llama3-70b/converse to /model/llama3-70b/converse
     app.add_middleware(PathTransformMiddleware, path_prefix=path_prefix)

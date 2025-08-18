@@ -25,18 +25,15 @@ spec:
           ports:
             - containerPort: {{ .Values.service.targetPort | default 8000 }}
           envFrom:
+            - secretRef:
+                name: agent-secret
             - configMapRef:
                 name: {{ include "app.name" . }}-config
+            - configMapRef:
+                name: agentic-platform-config
           env:
             - name: PYTHONPATH
               value: /app
-            {{- range .Values.configKeys }}
-            - name: {{ . }}
-              valueFrom:
-                secretKeyRef:
-                  name: agentic-platform-config
-                  key: {{ . }}
-            {{- end }}
           # Simple health checks that work reliably
           livenessProbe:
             httpGet:

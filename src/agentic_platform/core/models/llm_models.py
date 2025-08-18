@@ -28,3 +28,7 @@ class LLMRequest(BaseModel):
     hyperparams: Dict[str, Any]
     tools: Optional[List[ToolSpec]] = None
     force_tool: Optional[str] = None
+
+class LiteLLMClientInfo(BaseModel):
+    api_key: str
+    api_endpoint: str
