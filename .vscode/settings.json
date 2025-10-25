@@ -10,6 +10,8 @@
     "python.linting.enabled": false,
     "python.linting.pylintEnabled": false,
     "python.linting.flake8Enabled": false,
+    "pylint.enabled": false,
+    "python.linting.pylintPath": "",
     "python.defaultFormatter": "charliermarsh.ruff",
     "[python]": {
         "editor.defaultFormatter": "charliermarsh.ruff",
