@@ -1,0 +1,269 @@
+[0m[1mmodule.litellm.random_password.postgres_iam_password: Refreshing state... [id=none][0m
+[0m[1mrandom_string.suffix: Refreshing state... [id=hj8][0m
+[0m[1mmodule.litellm.random_string.litellm_master_key_suffix: Refreshing state... [id=FwQe9XEggLsepQzXtSIWHrFkLLI8eySi7oqxw1WtcnP3a653][0m
+[0m[1mmodule.cognito.random_string.suffix: Refreshing state... [id=f3nk1xc8][0m
+[0m[1mmodule.redis.random_password.redis_cache_auth_token: Refreshing state... [id=none][0m
+[0m[1mmodule.cloudfront_spa.data.aws_cloudfront_origin_request_policy.managed_cors_s3_origin: Reading...[0m[0m
+[0m[1mmodule.cloudfront_spa.data.aws_cloudfront_cache_policy.managed_caching_optimized: Reading...[0m[0m
+[0m[1mmodule.litellm.data.aws_caller_identity.current: Reading...[0m[0m
+[0m[1mmodule.cloudfront_spa.aws_cloudfront_origin_access_control.spa_website: Refreshing state... [id=E230GZ8599QLNF][0m
+[0m[1mmodule.postgres_aurora.aws_db_parameter_group.postgres: Refreshing state... [id=agent-ptfm-postgres-instance-params][0m
+[0m[1mmodule.redis.data.aws_region.current: Reading...[0m[0m
+[0m[1mmodule.redis.aws_elasticache_parameter_group.redis_cache: Refreshing state... [id=agent-ptfm-redis][0m
+[0m[1mmodule.litellm.aws_secretsmanager_secret.litellm_secret: Refreshing state... [id=arn:aws:secretsmanager:us-west-2:423623854297:secret:agent-ptfm-litellm-secret-E0Jcvf][0m
+[0m[1mmodule.eks.aws_iam_role.eks_node_role: Refreshing state... [id=agent-ptfm-eks-node-role][0m
+[0m[1mmodule.postgres_aurora.aws_security_group.postgres: Refreshing state... [id=sg-068e986d671b7ed78][0m
+[0m[1mmodule.redis.data.aws_region.current: Read complete after 0s [id=us-west-2][0m
+[0m[1mmodule.cognito.aws_secretsmanager_secret.m2m_credentials: Refreshing state... [id=arn:aws:secretsmanager:us-west-2:423623854297:secret:agent-ptfm-m2mcreds-f3nk1xc8-ldsnsa][0m
+[0m[1mmodule.litellm.data.aws_caller_identity.current: Read complete after 0s [id=423623854297][0m
+[0m[1mmodule.eks.aws_cloudwatch_log_group.eks_cluster_logs: Refreshing state... [id=/aws/eks/agent-ptfm-eks/cluster][0m
+[0m[1mmodule.postgres_aurora.aws_sns_topic.postgres_events: Refreshing state... [id=arn:aws:sns:us-west-2:423623854297:agent-ptfm-postgres-events][0m
+[0m[1mmodule.eks.aws_iam_role.eks_cluster_role: Refreshing state... [id=agent-ptfm-eks-cluster-role][0m
+[0m[1mmodule.postgres_aurora.aws_rds_cluster_parameter_group.postgres: Refreshing state... [id=agent-ptfm-postgres-params][0m
+[0m[1mmodule.postgres_aurora.aws_db_subnet_group.postgres: Refreshing state... [id=agent-ptfm-postgres][0m
+[0m[1mmodule.cognito.data.aws_caller_identity.current: Reading...[0m[0m
+[0m[1mmodule.cognito.data.aws_caller_identity.current: Read complete after 0s [id=423623854297][0m
+[0m[1mmodule.bastion.aws_iam_role.bastion_role: Refreshing state... [id=agent-ptfm-bastion-role][0m
+[0m[1mmodule.postgres_aurora.aws_backup_vault.postgres: Refreshing state... [id=agent-ptfm-pg-vault][0m
+[0m[1mmodule.s3_spa_website.aws_s3_bucket.this: Refreshing state... [id=terraform-20251026043000597300000001][0m
+[0m[1mmodule.eks.aws_security_group.eks_cluster_sg: Refreshing state... [id=sg-0e62987efc5d3172f][0m
+[0m[1mmodule.cloudfront_spa.data.aws_cloudfront_origin_request_policy.managed_cors_s3_origin: Read complete after 0s [id=88a5eaf4-2fd4-4709-b370-b4c650ea3fcf][0m
+[0m[1mmodule.bastion.data.aws_region.current: Reading...[0m[0m
+[0m[1mmodule.bastion.data.aws_region.current: Read complete after 0s [id=us-west-2][0m
+[0m[1mmodule.redis.aws_secretsmanager_secret.redis_cache_auth: Refreshing state... [id=arn:aws:secretsmanager:us-west-2:423623854297:secret:agent-ptfm-redis-auth-hj8-8NCvLr][0m
+[0m[1mmodule.cloudfront_spa.data.aws_cloudfront_cache_policy.managed_caching_optimized: Read complete after 0s [id=658327ea-f89d-4fab-a63d-7e88639e58f6][0m
+[0m[1mmodule.bastion.aws_security_group.bastion_sg: Refreshing state... [id=sg-06b382f014495a1db][0m
+[0m[1mmodule.redis.aws_security_group.redis_cache: Refreshing state... [id=sg-0b924e86a5c41d635][0m
+[0m[1mmodule.cloudfront_spa.data.aws_cloudfront_response_headers_policy.managed_cors_with_preflight: Reading...[0m[0m
+[0m[1mmodule.postgres_aurora.data.aws_region.current: Reading...[0m[0m
+[0m[1mmodule.postgres_aurora.data.aws_region.current: Read complete after 0s [id=us-west-2][0m
+[0m[1mmodule.eks.data.aws_caller_identity.current: Reading...[0m[0m
+[0m[1mmodule.redis.aws_elasticache_subnet_group.redis_cache: Refreshing state... [id=agent-ptfm-redis][0m
+[0m[1mmodule.eks.data.aws_caller_identity.current: Read complete after 0s [id=423623854297][0m
+[0m[1mmodule.postgres_aurora.aws_iam_role.backup_role: Refreshing state... [id=agent-ptfm-backup-role][0m
+[0m[1mmodule.cloudfront_spa.data.aws_cloudfront_response_headers_policy.managed_cors_with_preflight: Read complete after 0s [id=5cc3b908-e619-4b99-88e5-2cf7f45965bd][0m
+[0m[1mmodule.redis.data.aws_caller_identity.current: Reading...[0m[0m
+[0m[1mmodule.redis.data.aws_caller_identity.current: Read complete after 1s [id=423623854297][0m
+[0m[1mmodule.parameter_store.data.aws_region.current: Reading...[0m[0m
+[0m[1mmodule.parameter_store.data.aws_region.current: Read complete after 0s [id=us-west-2][0m
+[0m[1mmodule.eks.aws_security_group.eks_nodes_sg: Refreshing state... [id=sg-092dd9bf31c6b5f17][0m
+[0m[1mmodule.litellm.aws_secretsmanager_secret.agent_secret: Refreshing state... [id=arn:aws:secretsmanager:us-west-2:423623854297:secret:agent-ptfm-agent-secret-jndNLL][0m
+[0m[1mmodule.postgres_aurora.data.aws_caller_identity.current: Reading...[0m[0m
+[0m[1mmodule.postgres_aurora.data.aws_caller_identity.current: Read complete after 0s [id=423623854297][0m
+[0m[1mmodule.cognito.data.aws_region.current: Reading...[0m[0m
+[0m[1mmodule.litellm.data.aws_region.current: Reading...[0m[0m
+[0m[1mmodule.cognito.data.aws_region.current: Read complete after 0s [id=us-west-2][0m
+[0m[1mmodule.litellm.data.aws_region.current: Read complete after 0s [id=us-west-2][0m
+[0m[1mmodule.eks.data.aws_region.current: Reading...[0m[0m
+[0m[1mmodule.eks.data.aws_region.current: Read complete after 0s [id=us-west-2][0m
+[0m[1mmodule.postgres_aurora.aws_iam_role.rds_monitoring: Refreshing state... [id=agent-ptfm-rds-monitoring][0m
+[0m[1mmodule.cognito.aws_cognito_user_pool.main: Refreshing state... [id=us-west-2_MqAL5nQOt][0m
+[0m[1mmodule.bastion.data.aws_caller_identity.current: Reading...[0m[0m
+[0m[1mdata.aws_caller_identity.current: Reading...[0m[0m
+[0m[1mmodule.cloudfront_spa.aws_cloudfront_response_headers_policy.spa_website: Refreshing state... [id=64b5d537-88bd-43fe-9f56-8d697493b141][0m
+[0m[1mmodule.bastion.data.aws_caller_identity.current: Read complete after 0s [id=423623854297][0m
+[0m[1mmodule.cloudfront_spa.data.aws_cloudfront_cache_policy.managed_caching_disabled: Reading...[0m[0m
+[0m[1mmodule.bastion.data.aws_ami.ubuntu: Reading...[0m[0m
+[0m[1mdata.aws_caller_identity.current: Read complete after 0s [id=423623854297][0m
+[0m[1mmodule.postgres_aurora.aws_security_group_rule.postgres_egress: Refreshing state... [id=sgrule-2034907343][0m
+[0m[1mmodule.postgres_aurora.aws_rds_cluster.postgres: Refreshing state... [id=agent-ptfm-postgres][0m
+[0m[1mmodule.redis.aws_secretsmanager_secret_version.redis_cache_auth: Refreshing state... [id=arn:aws:secretsmanager:us-west-2:423623854297:secret:agent-ptfm-redis-auth-hj8-8NCvLr|terraform-20251026043004054500000008][0m
+[0m[1mmodule.redis.aws_iam_policy.redis_cache_connect: Refreshing state... [id=arn:aws:iam::423623854297:policy/agent-ptfm-redis-connect][0m
+[0m[1mmodule.eks.aws_iam_role.eks_deployment_role: Refreshing state... [id=agent-ptfm-eks-deployment-role][0m
+[0m[1mmodule.postgres_aurora.aws_backup_plan.postgres: Refreshing state... [id=93c6c77d-eea9-4a98-a37a-cec1f9d2e685][0m
+[0m[1mmodule.cloudfront_spa.data.aws_cloudfront_cache_policy.managed_caching_disabled: Read complete after 0s [id=4135ea2d-6df8-44a3-9df3-4b5a84be39ad][0m
+[0m[1mmodule.eks.aws_iam_policy.eks_deployment_policy: Refreshing state... [id=arn:aws:iam::423623854297:policy/agent-ptfm-eks-deployment-policy][0m
+[0m[1mmodule.litellm.aws_secretsmanager_secret_version.agent_secret: Refreshing state... [id=arn:aws:secretsmanager:us-west-2:423623854297:secret:agent-ptfm-agent-secret-jndNLL|terraform-20251026043003651200000007][0m
+[0m[1mmodule.eks.aws_security_group_rule.nodes_to_cluster: Refreshing state... [id=sgrule-2931893333][0m
+[0m[1mmodule.eks.aws_security_group_rule.cluster_to_nodes_kubelet: Refreshing state... [id=sgrule-632149934][0m
+[0m[1mmodule.bastion.data.aws_ami.ubuntu: Read complete after 0s [id=ami-03c1f788292172a4e][0m
+[0m[1mmodule.eks.aws_security_group_rule.cluster_to_nodes: Refreshing state... [id=sgrule-260965308][0m
+[0m[1mmodule.eks.aws_launch_template.eks_nodes: Refreshing state... [id=lt-08a149c4249ae6215][0m
+[0m[1mmodule.eks.aws_security_group_rule.nodes_to_nodes: Refreshing state... [id=sgrule-783708][0m
+[0m[1mmodule.eks.aws_iam_role_policy_attachment.eks_worker_node_policy: Refreshing state... [id=agent-ptfm-eks-node-role/arn:aws:iam::aws:policy/AmazonEKSWorkerNodePolicy][0m
+[0m[1mmodule.eks.aws_iam_role_policy_attachment.eks_cni_policy: Refreshing state... [id=agent-ptfm-eks-node-role/arn:aws:iam::aws:policy/AmazonEKS_CNI_Policy][0m
+[0m[1mmodule.eks.aws_iam_role_policy_attachment.eks_container_registry_policy: Refreshing state... [id=agent-ptfm-eks-node-role/arn:aws:iam::aws:policy/AmazonEC2ContainerRegistryReadOnly][0m
+[0m[1mmodule.eks.aws_iam_role_policy_attachment.eks_ssm_policy: Refreshing state... [id=agent-ptfm-eks-node-role/arn:aws:iam::aws:policy/AmazonSSMManagedInstanceCore][0m
+[0m[1mmodule.bastion.aws_iam_policy.bedrock_bastion_policy: Refreshing state... [id=arn:aws:iam::423623854297:policy/agent-ptfm-bedrock-bastion-policy][0m
+[0m[1mmodule.bastion.aws_iam_policy.ecr_bastion_policy: Refreshing state... [id=arn:aws:iam::423623854297:policy/agent-ptfm-ecr-bastion-policy][0m
+[0m[1mmodule.eks.aws_iam_role_policy_attachment.eks_cluster_policy: Refreshing state... [id=agent-ptfm-eks-cluster-role/arn:aws:iam::aws:policy/AmazonEKSClusterPolicy][0m
+[0m[1mmodule.eks.aws_iam_role_policy_attachment.eks_service_policy: Refreshing state... [id=agent-ptfm-eks-cluster-role/arn:aws:iam::aws:policy/AmazonEKSServicePolicy][0m
+[0m[1mmodule.bastion.aws_iam_instance_profile.bastion_profile: Refreshing state... [id=agent-ptfm-bastion-profile][0m
+[0m[1mmodule.bastion.aws_iam_role_policy_attachment.bastion_elb_readonly_attachment: Refreshing state... [id=agent-ptfm-bastion-role/arn:aws:iam::aws:policy/ElasticLoadBalancingReadOnly][0m
+[0m[1mmodule.bastion.aws_iam_role_policy_attachment.bastion_ssm: Refreshing state... [id=agent-ptfm-bastion-role/arn:aws:iam::aws:policy/AmazonSSMManagedInstanceCore][0m
+[0m[1mmodule.redis.aws_elasticache_replication_group.redis_cache: Refreshing state... [id=agent-ptfm-redis][0m
+[0m[1mmodule.postgres_aurora.aws_iam_role_policy_attachment.backup_policy: Refreshing state... [id=agent-ptfm-backup-role/arn:aws:iam::aws:policy/service-role/AWSBackupServiceRolePolicyForBackup][0m
+[0m[1mmodule.postgres_aurora.aws_iam_policy.rds_connect_policy: Refreshing state... [id=arn:aws:iam::423623854297:policy/agent-ptfm-rds-connect-policy][0m
+[0m[1mmodule.postgres_aurora.aws_backup_selection.postgres: Refreshing state... [id=9b5e1019-df97-49f8-b8ad-b4cdbd6742e4][0m
+[0m[1mmodule.postgres_aurora.aws_db_event_subscription.postgres_events: Refreshing state... [id=agent-ptfm-postgres-event-subscription][0m
+[0m[1mmodule.postgres_aurora.aws_iam_role_policy_attachment.rds_monitoring_policy: Refreshing state... [id=agent-ptfm-rds-monitoring/arn:aws:iam::aws:policy/service-role/AmazonRDSEnhancedMonitoringRole][0m
+[0m[1mmodule.postgres_aurora.aws_rds_cluster_instance.postgres[0]: Refreshing state... [id=agent-ptfm-postgres-0][0m
+[0m[1mmodule.postgres_aurora.aws_rds_cluster_instance.postgres[1]: Refreshing state... [id=agent-ptfm-postgres-1][0m
+[0m[1mmodule.s3_spa_website.aws_s3_bucket_public_access_block.this: Refreshing state... [id=terraform-20251026043000597300000001][0m
+[0m[1mmodule.s3_spa_website.aws_s3_bucket_versioning.this: Refreshing state... [id=terraform-20251026043000597300000001][0m
+[0m[1mmodule.s3_spa_website.aws_s3_bucket_lifecycle_configuration.this[0]: Refreshing state... [id=terraform-20251026043000597300000001][0m
+[0m[1mmodule.s3_spa_website.aws_s3_bucket_server_side_encryption_configuration.this: Refreshing state... [id=terraform-20251026043000597300000001][0m
+[0m[1mmodule.cognito.aws_cognito_user_group.super_admin: Refreshing state... [id=us-west-2_MqAL5nQOt/super_admin][0m
+[0m[1mmodule.cognito.aws_cognito_user_pool_domain.main: Refreshing state... [id=dev-auth-f3nk1xc8][0m
+[0m[1mmodule.cognito.aws_cognito_user_group.platform_user: Refreshing state... [id=us-west-2_MqAL5nQOt/platform_user][0m
+[0m[1mmodule.cognito.aws_cognito_user_group.platform_admin: Refreshing state... [id=us-west-2_MqAL5nQOt/platform_admin][0m
+[0m[1mmodule.cognito.aws_cognito_resource_server.api: Refreshing state... [id=us-west-2_MqAL5nQOt|api.dev.f3nk1xc8][0m
+[0m[1mmodule.eks.aws_iam_role_policy_attachment.eks_deployment_policy_attachment: Refreshing state... [id=agent-ptfm-eks-deployment-role/arn:aws:iam::423623854297:policy/agent-ptfm-eks-deployment-policy][0m
+[0m[1mmodule.postgres_aurora.aws_security_group_rule.postgres_ingress_bastion[0]: Refreshing state... [id=sgrule-2189885205][0m
+[0m[1mmodule.eks.aws_security_group_rule.bastion_to_cluster[0]: Refreshing state... [id=sgrule-2886631098][0m
+[0m[1mmodule.eks.aws_security_group_rule.cluster_to_bastion[0]: Refreshing state... [id=sgrule-1102779469][0m
+[0m[1mmodule.postgres_aurora.aws_security_group_rule.postgres_ingress_eks_nodes[0]: Refreshing state... [id=sgrule-2152310266][0m
+[0m[1mmodule.bastion.aws_iam_role_policy_attachment.bastion_bedrock_attachment: Refreshing state... [id=agent-ptfm-bastion-role/arn:aws:iam::423623854297:policy/agent-ptfm-bedrock-bastion-policy][0m
+[0m[1mmodule.eks.aws_eks_cluster.main: Refreshing state... [id=agent-ptfm-eks][0m
+[0m[1mmodule.bastion.aws_iam_role_policy_attachment.bastion_ecr_attachment: Refreshing state... [id=agent-ptfm-bastion-role/arn:aws:iam::423623854297:policy/agent-ptfm-ecr-bastion-policy][0m
+[0m[1mmodule.cognito.aws_cognito_user_pool_client.web_client: Refreshing state... [id=3pl0sl5tavr6emafvkhgqgn15s][0m
+[0m[1mmodule.cognito.aws_cognito_user_pool_client.m2m_client: Refreshing state... [id=6p2iu7fvrusdauo3pooacnje6g][0m
+[0m[1mmodule.bastion.aws_iam_policy.secrets_manager_bastion_policy: Refreshing state... [id=arn:aws:iam::423623854297:policy/agent-ptfm-secrets-manager-bastion-policy][0m
+[0m[1mmodule.bastion.aws_iam_policy.rds_cs_connect_policy: Refreshing state... [id=arn:aws:iam::423623854297:policy/agent-ptfm-rds-cs-connect-policy][0m
+[0m[1mmodule.cloudfront_spa.aws_cloudfront_distribution.spa_website: Refreshing state... [id=E3E00J76PFP2F9][0m
+[0m[1mmodule.litellm.aws_secretsmanager_secret_version.litellm_secret: Refreshing state... [id=arn:aws:secretsmanager:us-west-2:423623854297:secret:agent-ptfm-litellm-secret-E0Jcvf|terraform-20251026044251826000000012][0m
+[0m[1mmodule.bastion.aws_iam_policy.redis_bastion_policy: Refreshing state... [id=arn:aws:iam::423623854297:policy/agent-ptfm-redis-bastion-policy][0m
+[0m[1mmodule.cognito.aws_cognito_identity_pool.main[0]: Refreshing state... [id=us-west-2:6cecab02-c6ac-48dc-9675-50702fa1cb7b][0m
+[0m[1mmodule.cognito.aws_secretsmanager_secret_version.m2m_credentials: Refreshing state... [id=arn:aws:secretsmanager:us-west-2:423623854297:secret:agent-ptfm-m2mcreds-f3nk1xc8-ldsnsa|terraform-2025102604300756220000000b][0m
+[0m[1mmodule.eks.data.tls_certificate.eks: Reading...[0m[0m
+[0m[1mmodule.eks.aws_eks_addon.kube_proxy: Refreshing state... [id=agent-ptfm-eks:kube-proxy][0m
+[0m[1mmodule.eks.aws_eks_addon.vpc_cni: Refreshing state... [id=agent-ptfm-eks:vpc-cni][0m
+[0m[1mmodule.eks.aws_eks_access_entry.cluster_admin: Refreshing state... [id=agent-ptfm-eks:arn:aws:iam::423623854297:role/agent-ptfm-eks-cluster-role][0m
+[0m[1mmodule.eks.aws_eks_access_entry.additional_admins["arn:aws:iam::423623854297:user/mjramani-user1"]: Refreshing state... [id=agent-ptfm-eks:arn:aws:iam::423623854297:user/mjramani-user1][0m
+[0m[1mmodule.eks.aws_eks_access_entry.bastion_hosts[0]: Refreshing state... [id=agent-ptfm-eks:arn:aws:iam::423623854297:role/agent-ptfm-bastion-role][0m
+[0m[1mdata.aws_eks_cluster_auth.main: Reading...[0m[0m
+[0m[1mdata.aws_eks_cluster_auth.main: Read complete after 0s [id=agent-ptfm-eks][0m
+[0m[1mmodule.bastion.aws_iam_role_policy_attachment.bastion_secrets_manager_attachment: Refreshing state... [id=agent-ptfm-bastion-role/arn:aws:iam::423623854297:policy/agent-ptfm-secrets-manager-bastion-policy][0m
+[0m[1mmodule.bastion.aws_iam_role_policy_attachment.bastion_rds_connect: Refreshing state... [id=agent-ptfm-bastion-role/arn:aws:iam::423623854297:policy/agent-ptfm-rds-cs-connect-policy][0m
+[0m[1mmodule.cognito.aws_iam_role.authenticated[0]: Refreshing state... [id=agent-ptfm-cognito-authenticated][0m
+[0m[1mmodule.eks.data.tls_certificate.eks: Read complete after 0s [id=4687b9863b4f2caa907e2ad6c9ffcf73433dc367][0m
+[0m[1mmodule.bastion.aws_instance.bastion: Refreshing state... [id=i-07197f79e99d47926][0m
+[0m[1mmodule.bastion.aws_iam_policy.eks_bastion_policy: Refreshing state... [id=arn:aws:iam::423623854297:policy/agent-ptfm-eks-bastion-policy][0m
+[0m[1mmodule.bastion.aws_iam_role_policy_attachment.bastion_redis_attachment: Refreshing state... [id=agent-ptfm-bastion-role/arn:aws:iam::423623854297:policy/agent-ptfm-redis-bastion-policy][0m
+[0m[1mmodule.eks.aws_iam_openid_connect_provider.eks: Refreshing state... [id=arn:aws:iam::423623854297:oidc-provider/oidc.eks.us-west-2.amazonaws.com/id/05D6F7E83547A561647A90B7F471D04F][0m
+[0m[1mmodule.eks.aws_eks_node_group.main: Refreshing state... [id=agent-ptfm-eks:agent-ptfm-node-group][0m
+[0m[1mmodule.eks.aws_eks_access_policy_association.cluster_admin_policy: Refreshing state... [id=agent-ptfm-eks#arn:aws:iam::423623854297:role/agent-ptfm-eks-cluster-role#arn:aws:eks::aws:cluster-access-policy/AmazonEKSClusterAdminPolicy][0m
+[0m[1mmodule.eks.aws_eks_access_policy_association.additional_admins_policy["arn:aws:iam::423623854297:user/mjramani-user1"]: Refreshing state... [id=agent-ptfm-eks#arn:aws:iam::423623854297:user/mjramani-user1#arn:aws:eks::aws:cluster-access-policy/AmazonEKSClusterAdminPolicy][0m
+[0m[1mmodule.s3_spa_website.data.aws_iam_policy_document.cloudfront_oac[0]: Reading...[0m[0m
+[0m[1mmodule.s3_spa_website.data.aws_iam_policy_document.cloudfront_oac[0]: Read complete after 0s [id=985869039][0m
+[0m[1mmodule.s3_spa_website.aws_s3_bucket_policy.this[0]: Refreshing state... [id=terraform-20251026043000597300000001][0m
+[0m[1mmodule.eks.aws_eks_access_policy_association.bastion_hosts_policy[0]: Refreshing state... [id=agent-ptfm-eks#arn:aws:iam::423623854297:role/agent-ptfm-bastion-role#arn:aws:eks::aws:cluster-access-policy/AmazonEKSClusterAdminPolicy][0m
+[0m[1mmodule.bastion.aws_iam_role_policy_attachment.bastion_eks_policy: Refreshing state... [id=agent-ptfm-bastion-role/arn:aws:iam::423623854297:policy/agent-ptfm-eks-bastion-policy][0m
+[0m[1mmodule.eks.aws_eks_addon.cert_manager: Refreshing state... [id=agent-ptfm-eks:cert-manager][0m
+[0m[1mmodule.eks.aws_eks_addon.coredns: Refreshing state... [id=agent-ptfm-eks:coredns][0m
+[0m[1mmodule.cognito.aws_iam_role_policy.authenticated[0]: Refreshing state... [id=agent-ptfm-cognito-authenticated:agent-ptfm-authenticated-policy][0m
+[0m[1mmodule.cognito.aws_cognito_identity_pool_roles_attachment.main[0]: Refreshing state... [id=us-west-2:6cecab02-c6ac-48dc-9675-50702fa1cb7b][0m
+[0m[1mmodule.eks.aws_eks_addon.adot: Refreshing state... [id=agent-ptfm-eks:adot][0m
+[0m[1mmodule.irsa.aws_iam_policy.otel_opensearch_policy: Refreshing state... [id=arn:aws:iam::423623854297:policy/agent-ptfm-otel-opensearch-policy][0m
+[0m[1mmodule.irsa.data.aws_region.current: Reading...[0m[0m
+[0m[1mmodule.irsa.data.aws_caller_identity.current: Reading...[0m[0m
+[0m[1mmodule.irsa.aws_iam_policy.litellm_secrets_policy[0]: Refreshing state... [id=arn:aws:iam::423623854297:policy/agent-ptfm-litellm-secrets-policy][0m
+[0m[1mmodule.irsa.aws_iam_policy.litellm_redis_policy[0]: Refreshing state... [id=arn:aws:iam::423623854297:policy/agent-ptfm-litellm-redis-policy][0m
+[0m[1mmodule.irsa.aws_iam_policy.external_secrets_policy: Refreshing state... [id=arn:aws:iam::423623854297:policy/agent-ptfm-external-secrets-policy][0m
+[0m[1mmodule.irsa.aws_iam_policy.agent_secret_policy[0]: Refreshing state... [id=arn:aws:iam::423623854297:policy/agent-ptfm-agent-secret-policy][0m
+[0m[1mmodule.irsa.aws_iam_policy.memory_gateway_postgres_policy: Refreshing state... [id=arn:aws:iam::423623854297:policy/agent-ptfm-memory-gateway-postgres-policy][0m
+[0m[1mmodule.irsa.data.aws_region.current: Read complete after 0s [id=us-west-2][0m
+[0m[1mmodule.irsa.aws_iam_policy.load_balancer_controller_policy: Refreshing state... [id=arn:aws:iam::423623854297:policy/agent-ptfm-aws-load-balancer-controller-policy][0m
+[0m[1mmodule.irsa.aws_iam_policy.litellm_postgres_policy[0]: Refreshing state... [id=arn:aws:iam::423623854297:policy/agent-ptfm-litellm-postgres-policy][0m
+[0m[1mmodule.irsa.data.aws_caller_identity.current: Read complete after 0s [id=423623854297][0m
+[0m[1mmodule.irsa.aws_iam_role.ebs_csi_driver_role: Refreshing state... [id=agent-ptfm-ebs-csi-driver-role][0m
+[0m[1mmodule.irsa.aws_iam_role.memory_gateway_role: Refreshing state... [id=agent-ptfm-memory-gateway-role][0m
+[0m[1mmodule.irsa.aws_iam_policy.external_secrets_parameter_store_policy: Refreshing state... [id=arn:aws:iam::423623854297:policy/agent-ptfm-external-secrets-parameter-store-policy][0m
+[0m[1mmodule.irsa.aws_iam_role.litellm_role: Refreshing state... [id=agent-ptfm-litellm-role][0m
+[0m[1mmodule.irsa.aws_iam_policy.bedrock_retrieval_policy: Refreshing state... [id=arn:aws:iam::423623854297:policy/agent-ptfm-bedrock-retrieval-policy][0m
+[0m[1mmodule.irsa.aws_iam_role.agent_role: Refreshing state... [id=agent-ptfm-agent-role][0m
+[0m[1mmodule.irsa.aws_iam_role.retrieval_gateway_role: Refreshing state... [id=agent-ptfm-retrieval-gateway-role][0m
+[0m[1mmodule.irsa.aws_iam_role.otel_collector_role: Refreshing state... [id=agent-ptfm-otel-collector-role][0m
+[0m[1mmodule.irsa.aws_iam_policy.litellm_bedrock_policy: Refreshing state... [id=arn:aws:iam::423623854297:policy/agent-ptfm-litellm-bedrock-policy][0m
+[0m[1mmodule.irsa.aws_iam_role.external_secrets_role: Refreshing state... [id=agent-ptfm-external-secrets-role][0m
+[0m[1mmodule.irsa.aws_iam_role.load_balancer_controller_role: Refreshing state... [id=agent-ptfm-aws-load-balancer-controller-role][0m
+[0m[1mmodule.irsa.aws_iam_role_policy_attachment.ebs_csi_driver_service_account_policy: Refreshing state... [id=agent-ptfm-ebs-csi-driver-role/arn:aws:iam::aws:policy/service-role/AmazonEBSCSIDriverPolicy][0m
+[0m[1mmodule.irsa.aws_iam_role_policy_attachment.memory_gateway_cloudwatch_attachment: Refreshing state... [id=agent-ptfm-memory-gateway-role/arn:aws:iam::aws:policy/CloudWatchLogsFullAccess][0m
+[0m[1mmodule.irsa.aws_iam_role_policy_attachment.memory_gateway_postgres_attachment: Refreshing state... [id=agent-ptfm-memory-gateway-role/arn:aws:iam::423623854297:policy/agent-ptfm-memory-gateway-postgres-policy][0m
+[0m[1mmodule.irsa.aws_iam_role_policy_attachment.memory_gateway_bedrock_agentcore_attachment: Refreshing state... [id=agent-ptfm-memory-gateway-role/arn:aws:iam::aws:policy/BedrockAgentCoreFullAccess][0m
+[0m[1mmodule.irsa.aws_iam_role_policy_attachment.bedrock_retrieval_attachment: Refreshing state... [id=agent-ptfm-retrieval-gateway-role/arn:aws:iam::423623854297:policy/agent-ptfm-bedrock-retrieval-policy][0m
+[0m[1mmodule.irsa.aws_iam_role_policy_attachment.agent_secret_attachment[0]: Refreshing state... [id=agent-ptfm-agent-role/arn:aws:iam::423623854297:policy/agent-ptfm-agent-secret-policy][0m
+[0m[1mmodule.irsa.aws_iam_role_policy_attachment.litellm_bedrock_attachment: Refreshing state... [id=agent-ptfm-litellm-role/arn:aws:iam::423623854297:policy/agent-ptfm-litellm-bedrock-policy][0m
+[0m[1mmodule.irsa.aws_iam_role_policy_attachment.litellm_postgres_attachment[0]: Refreshing state... [id=agent-ptfm-litellm-role/arn:aws:iam::423623854297:policy/agent-ptfm-litellm-postgres-policy][0m
+[0m[1mmodule.irsa.aws_iam_role_policy_attachment.litellm_redis_attachment[0]: Refreshing state... [id=agent-ptfm-litellm-role/arn:aws:iam::423623854297:policy/agent-ptfm-litellm-redis-policy][0m
+[0m[1mmodule.irsa.aws_iam_role_policy_attachment.litellm_secrets_attachment[0]: Refreshing state... [id=agent-ptfm-litellm-role/arn:aws:iam::423623854297:policy/agent-ptfm-litellm-secrets-policy][0m
+[0m[1mmodule.irsa.aws_eks_addon.ebs_csi_driver: Refreshing state... [id=agent-ptfm-eks:aws-ebs-csi-driver][0m
+[0m[1mmodule.irsa.aws_iam_role_policy_attachment.otel_opensearch_attachment: Refreshing state... [id=agent-ptfm-otel-collector-role/arn:aws:iam::423623854297:policy/agent-ptfm-otel-opensearch-policy][0m
+[0m[1mmodule.irsa.aws_iam_role_policy_attachment.external_secrets_parameter_store_attachment: Refreshing state... [id=agent-ptfm-external-secrets-role/arn:aws:iam::423623854297:policy/agent-ptfm-external-secrets-parameter-store-policy][0m
+[0m[1mmodule.irsa.aws_iam_role_policy_attachment.external_secrets_attachment: Refreshing state... [id=agent-ptfm-external-secrets-role/arn:aws:iam::423623854297:policy/agent-ptfm-external-secrets-policy][0m
+[0m[1mmodule.irsa.aws_iam_role_policy_attachment.load_balancer_controller: Refreshing state... [id=agent-ptfm-aws-load-balancer-controller-role/arn:aws:iam::423623854297:policy/agent-ptfm-aws-load-balancer-controller-policy][0m
+[0m[1mmodule.parameter_store.aws_ssm_parameter.agentic_platform_config: Refreshing state... [id=/agentic-platform/config/dev][0m
+[0m[1mmodule.kubernetes[0].kubernetes_storage_class_v1.gp3: Refreshing state... [id=gp3][0m
+[0m[1mmodule.kubernetes[0].kubernetes_namespace.observability: Refreshing state... [id=observability][0m
+[0m[1mmodule.kubernetes[0].helm_release.external_secrets: Refreshing state... [id=external-secrets][0m
+[0m[1mmodule.kubernetes[0].helm_release.aws_load_balancer_controller: Refreshing state... [id=aws-load-balancer-controller][0m
+[0m[1mmodule.kubernetes[0].kubernetes_config_map.platform_config: Refreshing state... [id=default/agentic-platform-config][0m
+[0m[1mmodule.kubernetes[0].helm_release.otel_collectors: Refreshing state... [id=otel-collectors][0m
+
+Terraform used the selected providers to generate the following execution
+plan. Resource actions are indicated with the following symbols:
+  [33m~[0m update in-place[0m
+
+Terraform will perform the following actions:
+
+[1m  # module.cloudfront_spa.aws_cloudfront_distribution.spa_website[0m will be updated in-place
+[0m  [33m~[0m[0m resource "aws_cloudfront_distribution" "spa_website" {
+        id                             = "E3E00J76PFP2F9"
+        tags                           = {
+            "Environment" = "dev"
+            "ManagedBy"   = "Terraform"
+            "Name"        = "agent-ptfm-spa-website-cf-hj8"
+            "Project"     = "Agentic Platform Sample"
+            "Type"        = "CloudFrontDistribution"
+        }
+        [90m# (21 unchanged attributes hidden)[0m[0m
+
+      [33m~[0m[0m viewer_certificate {
+          [33m~[0m[0m minimum_protocol_version       = "TLSv1" [33m->[0m[0m "TLSv1.2_2021"
+            [90m# (1 unchanged attribute hidden)[0m[0m
+        }
+
+        [90m# (5 unchanged blocks hidden)[0m[0m
+    }
+
+[1m  # module.postgres_aurora.aws_rds_cluster_parameter_group.postgres[0m will be updated in-place
+[0m  [33m~[0m[0m resource "aws_rds_cluster_parameter_group" "postgres" {
+        id          = "agent-ptfm-postgres-params"
+        name        = "agent-ptfm-postgres-params"
+        tags        = {
+            "Environment" = "dev"
+            "ManagedBy"   = "Terraform"
+            "Project"     = "Agentic Platform Sample"
+        }
+        [90m# (5 unchanged attributes hidden)[0m[0m
+
+      [31m-[0m[0m parameter {
+          [31m-[0m[0m apply_method = "pending-reboot" [90m-> null[0m[0m
+          [31m-[0m[0m name         = "shared_preload_libraries" [90m-> null[0m[0m
+          [31m-[0m[0m value        = "pg_stat_statements" [90m-> null[0m[0m
+        }
+      [32m+[0m[0m parameter {
+          [32m+[0m[0m apply_method = "immediate"
+          [32m+[0m[0m name         = "shared_preload_libraries"
+          [32m+[0m[0m value        = "pg_stat_statements"
+        }
+
+        [90m# (2 unchanged blocks hidden)[0m[0m
+    }
+
+[1mPlan:[0m 0 to add, 2 to change, 0 to destroy.
+[0m[33m╷[0m[0m
+[33m│[0m [0m[1m[33mWarning: [0m[0m[1mDeprecated attribute[0m
+[33m│[0m [0m
+[33m│[0m [0m[0m  on ../../modules/bastion/iam.tf line 112, in resource "aws_iam_policy" "rds_cs_connect_policy":
+[33m│[0m [0m 112:           "arn:aws:rds-db:${data.aws_region.current[4m.name[0m}:${data.aws_caller_identity.current.account_id}:dbuser:${var.rds_cluster_resource_id}/*"[0m
+[33m│[0m [0m
+[33m│[0m [0mThe attribute "name" is deprecated. Refer to the provider documentation for details.
+[33m│[0m [0m
+[33m│[0m [0m(and 15 more similar warnings elsewhere)
+[33m╵[0m[0m
+[90m
+─────────────────────────────────────────────────────────────────────────────[0m
+
+Note: You didn't use the -out option to save this plan, so Terraform can't
+guarantee to take exactly these actions if you run "terraform apply" now.

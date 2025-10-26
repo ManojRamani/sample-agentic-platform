@@ -108,6 +108,13 @@ After the platform stack is deployed, you need to create PostgreSQL users, datab
 
 ### Option A: Running from Local Machine (Port Forwarding Required)
 
+
+# Get the specific Aurora writer endpoint
+
+```terraform output postgres_cluster_endpoint```
+"agent-ptfm-postgres.cluster-c7guemmykggt.us-west-2.rds.amazonaws.com"
+
+
 If running from your local machine, you need to port forward through the bastion host:
 
 ```bash

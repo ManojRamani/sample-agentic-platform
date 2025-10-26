@@ -2,7 +2,7 @@ Parameters:
   RepoUrl:
     Type: String
     Description: The URL of the repo that the CodeBuild project will clone.
-    Default: "https://github.com/aws-samples/sample-agentic-platform"
+    Default: https://github.com/aws-samples/sample-agentic-platform
 
   RepoBranchName:
     Type: String
@@ -16,7 +16,9 @@ Parameters:
 
   PlatformAdminRoleName:
     Type: String
-    Description: Recommended to use the same role name as the one used to deploy this stack. This role will have permissions over the platform (like KMS key etc..). 
+    Description: Recommended to use the same role name as the one used to deploy
+      this stack. This role will have permissions over the platform (like KMS
+      key etc..).
 
   CICDRoleName:
     Type: String
@@ -24,24 +26,26 @@ Parameters:
 
   UseKMS:
     Type: String
-    Default: "false"
-    AllowedValues: ["true", "false"]
+    Default: 'false'
+    AllowedValues:
+      - 'true'
+      - 'false'
     Description: Whether to use KMS encryption for CodeBuild artifacts
 
   StackName:
     Type: String
-    Default: "agentic-platform"
+    Default: agentic-platform
     Description: Name prefix for all resources
 
   Environment:
     Type: String
-    Default: "dev"
+    Default: dev
     Description: Environment name
 
 Conditions:
-  UseKMSEncryption: !Equals 
+  UseKMSEncryption: !Equals
     - !Ref UseKMS
-    - "true"
+    - 'true'
 
 Resources:
 
@@ -53,18 +57,18 @@ Resources:
   VPC:
     Type: AWS::EC2::VPC
     Properties:
-      CidrBlock: "10.0.0.0/16"
+      CidrBlock: 10.0.0.0/16
       EnableDnsSupport: true
       EnableDnsHostnames: true
       Tags:
         - Key: Name
-          Value: !Sub "${StackName}-vpc"
+          Value: !Sub ${StackName}-vpc
         - Key: Environment
           Value: !Ref Environment
         - Key: ManagedBy
           Value: CloudFormation
         - Key: Project
-          Value: "Agentic Platform Sample"
+          Value: Agentic Platform Sample
 
   # Internet Gateway
   InternetGateway:
@@ -72,13 +76,13 @@ Resources:
     Properties:
       Tags:
         - Key: Name
-          Value: !Sub "${StackName}-igw"
+          Value: !Sub ${StackName}-igw
         - Key: Environment
           Value: !Ref Environment
         - Key: ManagedBy
           Value: CloudFormation
         - Key: Project
-          Value: "Agentic Platform Sample"
+          Value: Agentic Platform Sample
 
   # Attach Internet Gateway to VPC
   InternetGatewayAttachment:
@@ -92,84 +96,84 @@ Resources:
     Type: AWS::EC2::Subnet
     Properties:
       VpcId: !Ref VPC
-      AvailabilityZone: !Sub "${AWS::Region}a"
-      CidrBlock: "10.0.1.0/24"
+      AvailabilityZone: !Sub ${AWS::Region}a
+      CidrBlock: 10.0.1.0/24
       MapPublicIpOnLaunch: false
       Tags:
         - Key: Name
-          Value: !Sub "${StackName}-public-subnet-1"
+          Value: !Sub ${StackName}-public-subnet-1
         - Key: Environment
           Value: !Ref Environment
         - Key: ManagedBy
           Value: CloudFormation
         - Key: Project
-          Value: "Agentic Platform Sample"
-        - Key: "kubernetes.io/role/elb"
-          Value: "1"
-        - Key: !Sub "kubernetes.io/cluster/${StackName}-eks"
-          Value: "shared"
+          Value: Agentic Platform Sample
+        - Key: kubernetes.io/role/elb
+          Value: '1'
+        - Key: !Sub kubernetes.io/cluster/${StackName}-eks
+          Value: shared
 
   PublicSubnet2:
     Type: AWS::EC2::Subnet
     Properties:
       VpcId: !Ref VPC
-      AvailabilityZone: !Sub "${AWS::Region}b"
-      CidrBlock: "10.0.2.0/24"
+      AvailabilityZone: !Sub ${AWS::Region}b
+      CidrBlock: 10.0.2.0/24
       MapPublicIpOnLaunch: false
       Tags:
         - Key: Name
-          Value: !Sub "${StackName}-public-subnet-2"
+          Value: !Sub ${StackName}-public-subnet-2
         - Key: Environment
           Value: !Ref Environment
         - Key: ManagedBy
           Value: CloudFormation
         - Key: Project
-          Value: "Agentic Platform Sample"
-        - Key: "kubernetes.io/role/elb"
-          Value: "1"
-        - Key: !Sub "kubernetes.io/cluster/${StackName}-eks"
-          Value: "shared"
+          Value: Agentic Platform Sample
+        - Key: kubernetes.io/role/elb
+          Value: '1'
+        - Key: !Sub kubernetes.io/cluster/${StackName}-eks
+          Value: shared
 
   # Private Subnets
   PrivateSubnet1:
     Type: AWS::EC2::Subnet
     Properties:
       VpcId: !Ref VPC
-      AvailabilityZone: !Sub "${AWS::Region}a"
-      CidrBlock: "10.0.11.0/24"
+      AvailabilityZone: !Sub ${AWS::Region}a
+      CidrBlock: 10.0.11.0/24
       Tags:
         - Key: Name
-          Value: !Sub "${StackName}-private-subnet-1"
+          Value: !Sub ${StackName}-private-subnet-1
         - Key: Environment
           Value: !Ref Environment
         - Key: ManagedBy
           Value: CloudFormation
         - Key: Project
-          Value: "Agentic Platform Sample"
-        - Key: "kubernetes.io/role/internal-elb"
-          Value: "1"
-        - Key: !Sub "kubernetes.io/cluster/${StackName}-eks"
-          Value: "shared"
+          Value: Agentic Platform Sample
+        - Key: kubernetes.io/role/internal-elb
+          Value: '1'
+        - Key: !Sub kubernetes.io/cluster/${StackName}-eks
+          Value: shared
 
   PrivateSubnet2:
     Type: AWS::EC2::Subnet
     Properties:
       VpcId: !Ref VPC
-      AvailabilityZone: !Sub "${AWS::Region}b"
-      CidrBlock: "10.0.12.0/24"
+      AvailabilityZone: !Sub ${AWS::Region}b
+      CidrBlock: 10.0.12.0/24
       Tags:
         - Key: Name
-          Value: !Sub "${StackName}-private-subnet-2"
+          Value: !Sub ${StackName}-private-subnet-2
         - Key: Environment
           Value: !Ref Environment
         - Key: ManagedBy
           Value: CloudFormation
         - Key: Project
-          Value: "Agentic Platform Sample"
-        - Key: "kubernetes.io/role/internal-elb"
-          Value: "1"
-        - Key: !Sub "kubernetes.io/cluster/${StackName}-eks"
-          Value: "shared"
+          Value: Agentic Platform Sample
+        - Key: kubernetes.io/role/internal-elb
+          Value: '1'
+        - Key: !Sub kubernetes.io/cluster/${StackName}-eks
+          Value: shared
 
   # Elastic IPs for NAT Gateways
   NatGateway1EIP:
@@ -179,13 +183,13 @@ Resources:
       Domain: vpc
       Tags:
         - Key: Name
-          Value: !Sub "${StackName}-nat-eip-1"
+          Value: !Sub ${StackName}-nat-eip-1
         - Key: Environment
           Value: !Ref Environment
         - Key: ManagedBy
           Value: CloudFormation
         - Key: Project
-          Value: "Agentic Platform Sample"
+          Value: Agentic Platform Sample
 
   NatGateway2EIP:
     Type: AWS::EC2::EIP
@@ -194,13 +198,13 @@ Resources:
       Domain: vpc
       Tags:
         - Key: Name
-          Value: !Sub "${StackName}-nat-eip-2"
+          Value: !Sub ${StackName}-nat-eip-2
         - Key: Environment
           Value: !Ref Environment
         - Key: ManagedBy
           Value: CloudFormation
         - Key: Project
-          Value: "Agentic Platform Sample"
+          Value: Agentic Platform Sample
 
   # NAT Gateways
   NatGateway1:
@@ -210,13 +214,13 @@ Resources:
       SubnetId: !Ref PublicSubnet1
       Tags:
         - Key: Name
-          Value: !Sub "${StackName}-nat-gateway-1"
+          Value: !Sub ${StackName}-nat-gateway-1
         - Key: Environment
           Value: !Ref Environment
         - Key: ManagedBy
           Value: CloudFormation
         - Key: Project
-          Value: "Agentic Platform Sample"
+          Value: Agentic Platform Sample
 
   NatGateway2:
     Type: AWS::EC2::NatGateway
@@ -225,13 +229,13 @@ Resources:
       SubnetId: !Ref PublicSubnet2
       Tags:
         - Key: Name
-          Value: !Sub "${StackName}-nat-gateway-2"
+          Value: !Sub ${StackName}-nat-gateway-2
         - Key: Environment
           Value: !Ref Environment
         - Key: ManagedBy
           Value: CloudFormation
         - Key: Project
-          Value: "Agentic Platform Sample"
+          Value: Agentic Platform Sample
 
   # Route Tables
   PublicRouteTable:
@@ -240,13 +244,13 @@ Resources:
       VpcId: !Ref VPC
       Tags:
         - Key: Name
-          Value: !Sub "${StackName}-public-route-table"
+          Value: !Sub ${StackName}-public-route-table
         - Key: Environment
           Value: !Ref Environment
         - Key: ManagedBy
           Value: CloudFormation
         - Key: Project
-          Value: "Agentic Platform Sample"
+          Value: Agentic Platform Sample
 
   DefaultPublicRoute:
     Type: AWS::EC2::Route
@@ -274,13 +278,13 @@ Resources:
       VpcId: !Ref VPC
       Tags:
         - Key: Name
-          Value: !Sub "${StackName}-private-route-table-1"
+          Value: !Sub ${StackName}-private-route-table-1
         - Key: Environment
           Value: !Ref Environment
         - Key: ManagedBy
           Value: CloudFormation
         - Key: Project
-          Value: "Agentic Platform Sample"
+          Value: Agentic Platform Sample
 
   DefaultPrivateRoute1:
     Type: AWS::EC2::Route
@@ -301,13 +305,13 @@ Resources:
       VpcId: !Ref VPC
       Tags:
         - Key: Name
-          Value: !Sub "${StackName}-private-route-table-2"
+          Value: !Sub ${StackName}-private-route-table-2
         - Key: Environment
           Value: !Ref Environment
         - Key: ManagedBy
           Value: CloudFormation
         - Key: Project
-          Value: "Agentic Platform Sample"
+          Value: Agentic Platform Sample
 
   DefaultPrivateRoute2:
     Type: AWS::EC2::Route
@@ -333,11 +337,11 @@ Resources:
       cfn_nag:
         rules_to_suppress:
           - id: W84
-            reason: "KMS encryption is conditionally enabled based on UseKMS parameter"
+            reason: KMS encryption is conditionally enabled based on UseKMS parameter
     Properties:
-      LogGroupName: !Sub "/aws/vpc/flow-logs/${StackName}-vpc"
+      LogGroupName: !Sub /aws/vpc/flow-logs/${StackName}-vpc
       RetentionInDays: 365
-      KmsKeyId: !If 
+      KmsKeyId: !If
         - UseKMSEncryption
         - !GetAtt ProjectKMSKey.Arn
         - !Ref AWS::NoValue
@@ -349,9 +353,10 @@ Resources:
       cfn_nag:
         rules_to_suppress:
           - id: W28
-            reason: "Named role required for consistent reference in VPC Flow Logs configuration"
+            reason: Named role required for consistent reference in VPC Flow Logs
+              configuration
     Properties:
-      RoleName: !Sub "${StackName}-vpc-flow-log-role"
+      RoleName: !Sub ${StackName}-vpc-flow-log-role
       AssumeRolePolicyDocument:
         Version: '2012-10-17'
         Statement:
@@ -365,14 +370,14 @@ Resources:
         - Key: ManagedBy
           Value: CloudFormation
         - Key: Project
-          Value: "Agentic Platform Sample"
+          Value: Agentic Platform Sample
 
   # IAM Policy for VPC Flow Logs
   VPCFlowLogPolicy:
     Type: AWS::IAM::RolePolicy
     Properties:
       RoleName: !Ref VPCFlowLogRole
-      PolicyName: !Sub "${StackName}-vpc-flow-log-policy"
+      PolicyName: !Sub ${StackName}-vpc-flow-log-policy
       PolicyDocument:
         Version: '2012-10-17'
         Statement:
@@ -385,7 +390,7 @@ Resources:
               - logs:DescribeLogStreams
             Resource:
               - !GetAtt VPCFlowLogGroup.Arn
-              - !Sub "${VPCFlowLogGroup.Arn}:*"
+              - !Sub ${VPCFlowLogGroup.Arn}:*
 
   # VPC Flow Log
   VPCFlowLog:
@@ -399,13 +404,13 @@ Resources:
       DeliverLogsPermissionArn: !GetAtt VPCFlowLogRole.Arn
       Tags:
         - Key: Name
-          Value: !Sub "${StackName}-vpc-flow-log"
+          Value: !Sub ${StackName}-vpc-flow-log
         - Key: Environment
           Value: !Ref Environment
         - Key: ManagedBy
           Value: CloudFormation
         - Key: Project
-          Value: "Agentic Platform Sample"
+          Value: Agentic Platform Sample
 
   ######################################################
   # Terraform State Bucket 
@@ -414,11 +419,19 @@ Resources:
   TerraformStateBucket:
     Type: AWS::S3::Bucket
     Properties:
-      BucketName: !Join 
+      BucketName: !Join
         - '-'
         - - !Ref AWS::StackName
-          - 'terraform-state'
-          - !Select [4, !Split ['-', !Select [2, !Split ['/', !Ref AWS::StackId]]]]
+          - terraform-state
+          - !Select
+            - 4
+            - !Split
+              - '-'
+              - !Select
+                - 2
+                - !Split
+                  - /
+                  - !Ref AWS::StackId
       VersioningConfiguration:
         Status: Enabled
       BucketEncryption:
@@ -435,7 +448,7 @@ Resources:
           - ObjectOwnership: BucketOwnerEnforced
       LoggingConfiguration:
         DestinationBucketName: !Ref TerraformStateLogsBucket
-        LogFilePrefix: "access-logs/"
+        LogFilePrefix: access-logs/
 
   TerraformStateLogsBucket:
     Type: AWS::S3::Bucket
@@ -443,9 +456,11 @@ Resources:
       cfn_nag:
         rules_to_suppress:
           - id: W51
-            reason: "This is the logging bucket for the terraform, we don't need a bucket policy here."
+            reason: This is the logging bucket for the terraform, we don't need a bucket
+              policy here.
           - id: W35
-            reason: "This is the access logging bucket itself - adding logging to the logging bucket would create a circular dependency"
+            reason: This is the access logging bucket itself - adding logging to the logging
+              bucket would create a circular dependency
     Properties:
       VersioningConfiguration:
         Status: Enabled
@@ -472,13 +487,13 @@ Resources:
           - Sid: EnforceSSLOnly
             Effect: Deny
             Principal: '*'
-            Action: 's3:*'
-            Resource: 
-              - !Sub '${TerraformStateBucket.Arn}/*'
+            Action: s3:*
+            Resource:
+              - !Sub ${TerraformStateBucket.Arn}/*
               - !GetAtt TerraformStateBucket.Arn
             Condition:
               Bool:
-                'aws:SecureTransport': false
+                aws:SecureTransport: false
 
   ######################################################
   # CodeBuild Project
@@ -487,13 +502,21 @@ Resources:
   InfrastructureCodeBuildProject:
     Type: AWS::CodeBuild::Project
     Properties:
-      Name: !Join 
+      Name: !Join
         - '-'
         - - !Ref AWS::StackName
-          - 'terraform-deployment'
-          - !Select [4, !Split ['-', !Select [2, !Split ['/', !Ref AWS::StackId]]]]
-      Description: 'Deploys infrastructure using Terraform'
-      ServiceRole: !Sub 'arn:aws:iam::${AWS::AccountId}:role/${CICDRoleName}'
+          - terraform-deployment
+          - !Select
+            - 4
+            - !Split
+              - '-'
+              - !Select
+                - 2
+                - !Split
+                  - /
+                  - !Ref AWS::StackId
+      Description: Deploys infrastructure using Terraform
+      ServiceRole: !Sub arn:aws:iam::${AWS::AccountId}:role/${CICDRoleName}
       Artifacts:
         Type: NO_ARTIFACTS
       Environment:
@@ -530,7 +553,7 @@ Resources:
             Value: !Ref PublicSubnet1
           - Name: PUBLIC_SUBNET_2_ID
             Value: !Ref PublicSubnet2
-      EncryptionKey: !If 
+      EncryptionKey: !If
         - UseKMSEncryption
         - !GetAtt ProjectKMSKey.Arn
         - !Ref AWS::NoValue
@@ -546,23 +569,23 @@ Resources:
                 - echo "Installing dependencies..."
                 - apt-get update -y
                 - apt-get install -y wget unzip jq
-                
+
                 - TERRAFORM_VERSION="1.11.3"
                 - echo "Installing Terraform ${TERRAFORM_VERSION}..."
                 - wget -q "https://releases.hashicorp.com/terraform/${TERRAFORM_VERSION}/terraform_${TERRAFORM_VERSION}_linux_amd64.zip"
                 - unzip "terraform_${TERRAFORM_VERSION}_linux_amd64.zip"
                 - mv terraform /usr/local/bin/
                 - terraform version
-            
+
             pre_build:
               commands:
                 - export TF_IN_AUTOMATION=true
                 - echo "Manual CodeBuild execution"
-                
+
                 - git clone --single-branch --branch $REPO_BRANCH_NAME $REPO_URL
-                
+
                 - cd $TF_PATH
-                
+
                 - echo "Creating backend configuration..."
                 - |
                   cat > backend.tf << EOF
@@ -576,7 +599,7 @@ Resources:
                     }
                   }
                   EOF
-                
+
                 - echo "Creating terraform.tfvars file..."
                 - |
                   cat > terraform.tfvars << EOF
@@ -584,11 +607,11 @@ Resources:
                   aws_region          = "${AWS_REGION}"
                   environment         = "${ENVIRONMENT}"
                   name_prefix         = "agentcore-"
-                  
+
                   enable_kms_encryption = false
                   kms_key_arn          = null
                   kms_key_id           = null
-                  
+
                   # Networking Variables (from CloudFormation VPC)
                   vpc_id             = "${VPC_ID}"
                   vpc_cidr_block     = "10.0.0.0/16"
@@ -604,7 +627,7 @@ Resources:
                   postgres_deletion_protection = false
                   postgres_iam_username        = "postgres_iam_user"
 
-                  
+
                   # Common Tags
                   common_tags = {
                     Environment = "${ENVIRONMENT}"
@@ -612,17 +635,17 @@ Resources:
                     Project     = "Agentic Platform Sample"
                   }
                   EOF
-                
+
                 - terraform init -input=false
-            
+
             build:
               commands:
                 - echo "Creating Terraform plan..."
                 - terraform plan -out=tfplan -input=false
-                
+
                 - echo "Applying Terraform plan..."
                 - terraform apply -auto-approve tfplan
-                
+
                 - echo "Deployment completed. Outputs:"
                 - terraform output -json | jq
 
@@ -638,13 +661,13 @@ Resources:
           - Sid: Enable IAM User Permissions
             Effect: Allow
             Principal:
-              AWS: !Sub 'arn:aws:iam::${AWS::AccountId}:root'
-            Action: 'kms:*'
+              AWS: !Sub arn:aws:iam::${AWS::AccountId}:root
+            Action: kms:*
             Resource: '*'
           - Sid: Allow CodeBuild Role to use the key
             Effect: Allow
             Principal:
-              AWS: !Sub 'arn:aws:iam::${AWS::AccountId}:role/${CICDRoleName}'
+              AWS: !Sub arn:aws:iam::${AWS::AccountId}:role/${CICDRoleName}
             Action:
               - kms:Decrypt
               - kms:DescribeKey
@@ -655,9 +678,9 @@ Resources:
           - Sid: Allow Federated Role to manage the key
             Effect: Allow
             Principal:
-              AWS: 
-                - !Sub 'arn:aws:iam::${AWS::AccountId}:root'
-                - !Sub 'arn:aws:iam::${AWS::AccountId}:role/${PlatformAdminRoleName}'
+              AWS:
+                - !Sub arn:aws:iam::${AWS::AccountId}:root
+                - !Sub arn:aws:iam::${AWS::AccountId}:role/${PlatformAdminRoleName}
             Action:
               - kms:Create*
               - kms:Describe*
@@ -679,7 +702,7 @@ Resources:
     Condition: UseKMSEncryption
     Type: AWS::KMS::Alias
     Properties:
-      AliasName: !Sub 'alias/${AWS::StackName}-codebuild-key'
+      AliasName: !Sub alias/${AWS::StackName}-codebuild-key
       TargetKeyId: !Ref ProjectKMSKey
 
 Outputs:
@@ -688,59 +711,65 @@ Outputs:
     Description: ID of the VPC
     Value: !Ref VPC
     Export:
-      Name: !Sub "${AWS::StackName}-VPC-ID"
-  
+      Name: !Sub ${AWS::StackName}-VPC-ID
+
   VPCCidrBlock:
     Description: CIDR block of the VPC
     Value: !GetAtt VPC.CidrBlock
     Export:
-      Name: !Sub "${AWS::StackName}-VPC-CIDR"
-  
+      Name: !Sub ${AWS::StackName}-VPC-CIDR
+
   PublicSubnet1Id:
     Description: ID of public subnet 1
     Value: !Ref PublicSubnet1
     Export:
-      Name: !Sub "${AWS::StackName}-PublicSubnet1-ID"
-  
+      Name: !Sub ${AWS::StackName}-PublicSubnet1-ID
+
   PublicSubnet2Id:
     Description: ID of public subnet 2
     Value: !Ref PublicSubnet2
     Export:
-      Name: !Sub "${AWS::StackName}-PublicSubnet2-ID"
-  
+      Name: !Sub ${AWS::StackName}-PublicSubnet2-ID
+
   PrivateSubnet1Id:
     Description: ID of private subnet 1
     Value: !Ref PrivateSubnet1
     Export:
-      Name: !Sub "${AWS::StackName}-PrivateSubnet1-ID"
-  
+      Name: !Sub ${AWS::StackName}-PrivateSubnet1-ID
+
   PrivateSubnet2Id:
     Description: ID of private subnet 2
     Value: !Ref PrivateSubnet2
     Export:
-      Name: !Sub "${AWS::StackName}-PrivateSubnet2-ID"
-  
+      Name: !Sub ${AWS::StackName}-PrivateSubnet2-ID
+
   PublicSubnetIds:
     Description: IDs of the public subnets
-    Value: !Join [",", [!Ref PublicSubnet1, !Ref PublicSubnet2]]
+    Value: !Join
+      - ','
+      - - !Ref PublicSubnet1
+        - !Ref PublicSubnet2
     Export:
-      Name: !Sub "${AWS::StackName}-PublicSubnet-IDs"
-  
+      Name: !Sub ${AWS::StackName}-PublicSubnet-IDs
+
   PrivateSubnetIds:
     Description: IDs of the private subnets
-    Value: !Join [",", [!Ref PrivateSubnet1, !Ref PrivateSubnet2]]
+    Value: !Join
+      - ','
+      - - !Ref PrivateSubnet1
+        - !Ref PrivateSubnet2
     Export:
-      Name: !Sub "${AWS::StackName}-PrivateSubnet-IDs"
+      Name: !Sub ${AWS::StackName}-PrivateSubnet-IDs
 
   # CodeBuild Outputs
   StateBucketName:
     Description: S3 bucket for Terraform state
     Value: !Ref TerraformStateBucket
-  
+
   CodeBuildProjectName:
     Description: Name of the CodeBuild project for infrastructure deployment
     Value: !Ref InfrastructureCodeBuildProject
-  
+
   ManualBuildCommand:
     Description: Command to manually start a CodeBuild execution
-    Value: !Sub "aws codebuild start-build --project-name ${InfrastructureCodeBuildProject}"
+    Value: !Sub aws codebuild start-build --project-name ${InfrastructureCodeBuildProject}
