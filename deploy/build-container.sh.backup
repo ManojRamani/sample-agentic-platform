@@ -13,28 +13,22 @@ SERVICE_NAME="$1"
 cd "$(dirname "$0")/.."
 
 # Check for Dockerfile in src directory structure first, then fall back to docker directory
-SRC_AGENT_DOCKERFILE_PATH="src/agentic_platform/agent/${SERVICE_NAME}/Dockerfile"
-SRC_SERVICE_DOCKERFILE_PATH="src/agentic_platform/service/${SERVICE_NAME}/Dockerfile"
+SRC_DOCKERFILE_PATH="src/agentic_platform/agent/${SERVICE_NAME}/Dockerfile"
 DOCKER_DIR="docker/${SERVICE_NAME}"
 DOCKER_DOCKERFILE_PATH="${DOCKER_DIR}/Dockerfile"
 
-if [[ -f "$SRC_AGENT_DOCKERFILE_PATH" ]]; then
-    DOCKERFILE_PATH="$SRC_AGENT_DOCKERFILE_PATH"
-    echo "Using Dockerfile from agent directory: $DOCKERFILE_PATH"
-elif [[ -f "$SRC_SERVICE_DOCKERFILE_PATH" ]]; then
-    DOCKERFILE_PATH="$SRC_SERVICE_DOCKERFILE_PATH"
-    echo "Using Dockerfile from service directory: $DOCKERFILE_PATH"
+if [[ -f "$SRC_DOCKERFILE_PATH" ]]; then
+    DOCKERFILE_PATH="$SRC_DOCKERFILE_PATH"
+    echo "Using Dockerfile from src directory: $DOCKERFILE_PATH"
 elif [[ -f "$DOCKER_DOCKERFILE_PATH" ]]; then
     DOCKERFILE_PATH="$DOCKER_DOCKERFILE_PATH"
     echo "Using Dockerfile from docker directory: $DOCKERFILE_PATH"
 else
-    echo "Error: Dockerfile not found at $SRC_AGENT_DOCKERFILE_PATH, $SRC_SERVICE_DOCKERFILE_PATH, or $DOCKER_DOCKERFILE_PATH"
+    echo "Error: Dockerfile not found at $SRC_DOCKERFILE_PATH or $DOCKER_DOCKERFILE_PATH"
     echo "Available services in docker/:"
     ls -1 docker/ 2>/dev/null | grep -v "^$" || echo "  No services found in docker/ directory"
     echo "Available services in src/agentic_platform/agent/:"
     ls -1 src/agentic_platform/agent/ 2>/dev/null | grep -v "^$" || echo "  No services found in src/agentic_platform/agent/ directory"
-    echo "Available services in src/agentic_platform/service/:"
-    ls -1 src/agentic_platform/service/ 2>/dev/null | grep -v "^$" || echo "  No services found in src/agentic_platform/service/ directory"
     exit 1
 fi
 
@@ -109,7 +103,7 @@ fi
 
 # Build Docker image
 echo "Building Docker image..."
-docker buildx build --platform linux/amd64,linux/arm64 --push -t "$ECR_REPO_URI:$IMAGE_TAG" -f "$DOCKERFILE_PATH" .
+docker buildx build --platform linux/amd64,linux/arm64 -t "$ECR_REPO_URI:$IMAGE_TAG" -f "$DOCKERFILE_PATH" .
 
 if [ $? -ne 0 ]; then
     echo "Error: Failed to build Docker image"
@@ -117,8 +111,8 @@ if [ $? -ne 0 ]; then
 fi
 
 # Push to ECR
-# echo "Pushing to ECR..."
-# docker push "$ECR_REPO_URI:$IMAGE_TAG"
+echo "Pushing to ECR..."
+docker push "$ECR_REPO_URI:$IMAGE_TAG"
 
 if [ $? -ne 0 ]; then
     echo "Error: Failed to push to ECR"

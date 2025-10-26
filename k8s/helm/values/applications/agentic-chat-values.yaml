@@ -9,7 +9,7 @@ namespace: "default"
 replicaCount: 1
 
 image:
-  repository: "agentic-platform-agentic-chat"
+  repository: "agentic-platform-agentic_chat"
   tag: latest
   pullPolicy: Always
 
@@ -19,7 +19,7 @@ fullnameOverride: "agentic-chat"
 service:
   type: ClusterIP
   port: 80
-  targetPort: 8000
+  targetPort: 8080
 
 env:
   - name: PYTHONPATH

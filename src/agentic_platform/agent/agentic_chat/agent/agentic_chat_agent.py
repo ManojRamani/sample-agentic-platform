@@ -6,7 +6,7 @@ from typing import AsyncGenerator
 
 from strands import Agent
 from strands_tools import calculator
-from strands.models.litellm import OpenAIModel
+from strands.models.openai import OpenAIModel
 
 from agentic_platform.core.models.api_models import AgenticRequest, AgenticResponse
 from agentic_platform.core.models.memory_models import Message, TextContent
@@ -31,7 +31,7 @@ class StrandsAgenticChatAgent:
         # to use the proxy so it's preferred to use the OpenAIModel type when calling
         # the actual proxy vs. just using the SDK. 
         self.model = OpenAIModel(
-            model_id="anthropic.claude-sonnet-4-20250514-v1:0",
+            model_id="us.anthropic.claude-3-5-sonnet-20241022-v2:0",
             client_args={
                 "api_key": litellm_info.api_key,
                 "base_url": litellm_info.api_endpoint,
@@ -83,4 +83,3 @@ class StrandsAgenticChatAgent:
                 error=str(e)
             )
             yield error_event
-               

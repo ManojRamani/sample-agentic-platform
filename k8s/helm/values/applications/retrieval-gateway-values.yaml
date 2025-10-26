@@ -14,7 +14,7 @@ aws:
   account: ""
 
 image:
-  repository: "agentic-platform-retrieval-gateway"
+  repository: "agentic-platform-retrieval_gateway"
   tag: latest
   pullPolicy: Always
 
@@ -24,7 +24,7 @@ fullnameOverride: "retrieval-gateway"
 service:
   type: ClusterIP
   port: 80
-  targetPort: 8000
+  targetPort: 8080
 
 env:
   - name: PYTHONPATH
