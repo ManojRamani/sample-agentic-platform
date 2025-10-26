@@ -1,6 +1,5 @@
 """Agentic Chat Agent implementation using Strands."""
 
-import json
 import logging
 from typing import AsyncGenerator
 
@@ -48,6 +47,9 @@ class StrandsAgenticChatAgent:
         """Invoke the Strands agent synchronously."""
         
         text_content = request.message.get_text_content()
+        if text_content is None:
+            raise ValueError("No text content found in request message")
+        
         result = self.agent(text_content.text)
         
         response_message = Message(
@@ -57,14 +59,24 @@ class StrandsAgenticChatAgent:
         
         return AgenticResponse(
             message=response_message,
-            session_id=request.session_id,
+            session_id=request.session_id or "default",
             metadata={"agent_type": "strands_agentic_chat"}
         )
 
     async def invoke_stream(self, request: AgenticRequest) -> AsyncGenerator[StreamEvent, None]:
         """Invoke the Strands agent with streaming support using async iterator."""        
-        converter = StrandsStreamingConverter(request.session_id)
+        session_id = request.session_id or "default"
+        converter = StrandsStreamingConverter(session_id)
         text_content = request.message.get_text_content()
+        
+        if text_content is None:
+            from agentic_platform.core.models.streaming_models import ErrorEvent
+            error_event = ErrorEvent(
+                session_id=session_id,
+                error="No text content found in request message"
+            )
+            yield error_event
+            return
         
         try:
             async for event in self.agent.stream_async(text_content.text):
@@ -79,7 +91,7 @@ class StrandsAgenticChatAgent:
             logger.error(f"Error in streaming: {e}")
             from agentic_platform.core.models.streaming_models import ErrorEvent
             error_event = ErrorEvent(
-                session_id=request.session_id,
+                session_id=session_id,
                 error=str(e)
             )
             yield error_event
