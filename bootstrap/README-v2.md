@@ -105,7 +105,7 @@ update in Code Build > Select the Build Project > Edit > in section "Buildspec"
 
 After ~20-30 minutes your infrastructure should be deployed!
 
-## 2. GitHub Bootstrap (Optional)
+## 2. GitHub Bootstrap (Optional)  [mr-skipped]
 
 In this section you'll:
 
@@ -157,7 +157,7 @@ Lastly, we need to trigger the code pipeline. Navigate to .github/workflows/ecr-
 
 And that's it! We've completed the "CI" part of our "CI/CD" pipeline.
 
-## 3. Configure EKS Access Roles
+## 3. Configure EKS Access Roles  [MR: this should happen before running code build script]
 
 After the bootstrap stack is deployed, you need to configure additional admin roles for EKS access:
 
@@ -197,7 +197,7 @@ After the bootstrap stack is deployed, you need to configure additional admin ro
 
 **Important:** This configuration is required for proper EKS cluster access. Without it, you may encounter permission issues when deploying applications.
 
-3.1 **Continued CodeBuild configuration:** (optional if you have forked your ownn giuthub repo)
+3.1 [mr: skipped] **Continued CodeBuild configuration:** (optional if you have forked your ownn giuthub repo)
     Within the CodeBuild UI for your build, after clicking into edit, find and expand the "Additional configuration" section
     Scroll down and find the "Environment Variables"
     Edit the value for "REPO_URL" to be your forked repo for example:
@@ -225,7 +225,7 @@ After updating the configuration, manually trigger the CodeBuild project from th
 
 This validation step is crucial before proceeding with the rest of the deployment process.
 
-## 5. Configure Kubectl Access to Private EKS Cluster
+## 5. Configure Kubectl Access to Private EKS Cluster  [mr: works]
 
 Since the EKS cluster is deployed privately, you need to access it through the bastion host using SSM port forwarding:
 
@@ -264,7 +264,7 @@ Since the EKS cluster is deployed privately, you need to access it through the b
 
 
 
-## 6. PostgreSQL Users Setup
+## 6. PostgreSQL Users Setup  [MR: did 6 B - via bastion]
 
 After the platform stack is deployed, you need to create PostgreSQL users, databases, and permissions using the `postgres-users` stack. This is a **one-time setup**.
 
@@ -296,7 +296,7 @@ terraform init
 terraform apply -var="use_local_proxy=true"
 ```
 
-### Option B: Running from Bastion Host
+### Option B: Running from Bastion Host  [MR: ran at bastion - ensure entry role is admin - it worked!!]
 
 If running directly from the bastion host, you can execute terraform directly:
 
@@ -322,7 +322,7 @@ terraform output postgres_cluster_endpoint
 
 After completing the infrastructure setup and PostgreSQL configuration, deploy the core platform services:
 
-#### Deploy LiteLLM
+#### Deploy LiteLLM  [MR: step-success - see image deploy-lite-llm]
 
 Deploy the LiteLLM gateway for LLM model management from the root directory:
 
@@ -336,7 +336,7 @@ kubectl get pods #ensure its running, if not then you should NOT proceed beyond 
 # kubectl logs -f <pod_name>
 ```
 
-#### Deploy Gateways (Optional)
+#### Deploy Gateways (Optional)  [mr: failed deployment - see image deploy-gateway-failed.png ]
 
 If you want to use the memory or retrieval gateways, run:
 
@@ -364,7 +364,7 @@ curl http://localhost:8092/api/retrieval-gateway/health
 **Note:** The --build flag will build the Docker images. If you're running this locally and encounter Docker issues, you can omit the flag to use pre-built images.
 
 
-## 7. (Optional) Enable LangFuse
+## 7. (Optional) Enable LangFuse  [mr: deploy-success - see image]
 
 LangFuse is an open source LLM engineering platform that can be deployed in Kubernetes. For this sample, it also provides an additional location to send traces to demonstrate the power of using OpenTelemetry. Without changing your code, you can send your traces to any backend.
 
@@ -387,7 +387,7 @@ chmod +x ./bootstrap/langfuse-bootstrap.sh
 ```
 
 
-## 8. Deploy Applications
+## 8. Deploy Applications [mr: deploy Success - see image deploy-apps-pass.png]
 
 Now deploy some apps:
 
@@ -402,7 +402,7 @@ Now deploy some apps:
 ./deploy/deploy-application.sh agentic-chat --build
 ```
 
-## 9. Database Migrations
+## 9. Database Migrations [mr: deploy FAILED - see image db-migrations-failed]
 
 ### Running Database Migrations
 
