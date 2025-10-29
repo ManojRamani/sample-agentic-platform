@@ -336,7 +336,7 @@ kubectl get pods #ensure its running, if not then you should NOT proceed beyond 
 # kubectl logs -f <pod_name>
 ```
 
-#### Deploy Gateways (Optional)  [mr: failed deployment - see image deploy-gateway-failed.png ]
+#### Deploy Gateways (Optional)  [mr: Passed - needs docker w/ buildx support on the bastion host retrieval-and-memory-gateway-Passed.png ]
 
 If you want to use the memory or retrieval gateways, run:
 
@@ -412,7 +412,90 @@ After the infrastructure is deployed and you have kubectl access configured (eit
 uv run ./deploy/run-migrations.sh
 ```
 
+==================
+## Database Migrations Setup
+
+### Prerequisites
+
+Before running migrations, ensure you have:
+
+1. Deployed the infrastructure (platform-eks stack)
+2. AWS CLI configured with appropriate permissions
+3. Access to the bastion host (if running from local machine)
+
+### Option 1: Running from Local Machine (Recommended)
+
+```bash
+# Run migrations using port forwarding through bastion
+uv run ./deploy/run-migrations.sh
+```
+
+### Option 2: Running from Bastion Host  [did this - success - see image db-migrations-passed.png - needs ssm installed in bastion]
+
+If running directly from the bastion host, you need additional setup:
+
+#### Step 1: Configure AWS Region
+
+```bash
+# Set AWS region environment variables
+export AWS_REGION=us-west-2
+export AWS_DEFAULT_REGION=us-west-2
+
+# Or configure AWS CLI
+aws configure set region us-west-2
+```
+
+#### Step 2: Set Database Credentials
+
+```bash
+# Get the secret ARN from terraform output
+cd infrastructure/stacks/platform-eks
+SECRET_ARN=$(terraform output -raw postgres_master_user_secret_arn)
+
+# if installe via CodeBuild, get this value from CodeBuild log fine (download from cloud logs and search param)
+# Get the database password
+DB_PASSWORD=$(aws secretsmanager get-secret-value --secret-id "$SECRET_ARN" --query "SecretString" --output text | jq -r '.password')
+
+# Set required environment variables
+export POSTGRES_HOST=localhost
+export POSTGRES_PORT=5432
+export POSTGRES_USER=postgres
+export POSTGRES_PASSWORD=$DB_PASSWORD
+export POSTGRES_DB=postgres
+```
+
+#### Step 3: Run Migrations
+
+```bash
+# Run the migration script
+uv run ./deploy/run-migrations.sh
+```
+=============================================================
+
+
+
 ## 10. Testing the Deployment
+
+
+```bash
+export AWS_REGION=us-west-2
+
+# Find your Cognito User Pool
+
+USER_POOL_ID=$(aws cognito-idp list-user-pools --max-results 10 --query "UserPools[?contains(Name, 'agent-ptfm')].Id" --output text)
+echo "User Pool ID: $USER_POOL_ID"
+
+# Get the Client ID from the User Pool
+
+CLIENT_ID=$(aws cognito-idp list-user-pool-clients --user-pool-id $USER_POOL_ID --query "UserPoolClients[0].ClientId" --output text)
+echo "Client ID: $CLIENT_ID"
+
+```
+### Create test user (replace with your email and password)
+```bash
+uv run python script/create_test_user.py --user-pool-id "$USER_POOL_ID" --email "your-email@example.com" --password "YourPassword123!"
+
+```
 
 ### Create Test User and Generate Token
 USER_POOL_ID can be found in the codebuild logs under: "cognito_user_pool_id"
