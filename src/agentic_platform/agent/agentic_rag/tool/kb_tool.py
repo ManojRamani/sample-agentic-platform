@@ -11,9 +11,10 @@ logger = logging.getLogger(__name__)
 knowledge_base_id = os.getenv('KNOWLEDGE_BASE_ID')
 
 if not knowledge_base_id:
-    raise ValueError("KNOWLEDGE_BASE_ID environment variable must be set")
-
-client = boto3.client('bedrock-agent-runtime')
+    logger.warning("KNOWLEDGE_BASE_ID environment variable not set. Knowledge base search will return mock data.")
+    client = None
+else:
+    client = boto3.client('bedrock-agent-runtime')
 
 @tool
 def search_knowledge_base(query: str) -> str:
@@ -25,6 +26,11 @@ def search_knowledge_base(query: str) -> str:
     Returns:
         Relevant information from the knowledge base
     """
+    # If no knowledge base is configured, return mock data for testing
+    if not client or not knowledge_base_id:
+        logger.info(f"Mock knowledge base search for query: {query}")
+        return f"Mock RAG response for query: '{query}'. This is a test response since no knowledge base is configured."
+    
     try:
         response = client.retrieve(
             knowledgeBaseId=knowledge_base_id,

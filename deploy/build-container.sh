@@ -25,17 +25,14 @@ SRC_DOCKERFILE_PATH="src/agentic_platform/${TYPE}/${FOLDER_NAME}/Dockerfile"
 DOCKER_DIR="docker/${FOLDER_NAME}"
 DOCKER_DOCKERFILE_PATH="${DOCKER_DIR}/Dockerfile"
 
-if [[ -f "$SRC_AGENT_DOCKERFILE_PATH" ]]; then
-    DOCKERFILE_PATH="$SRC_AGENT_DOCKERFILE_PATH"
-    echo "Using Dockerfile from agent directory: $DOCKERFILE_PATH"
-elif [[ -f "$SRC_SERVICE_DOCKERFILE_PATH" ]]; then
-    DOCKERFILE_PATH="$SRC_SERVICE_DOCKERFILE_PATH"
-    echo "Using Dockerfile from service directory: $DOCKERFILE_PATH"
+if [[ -f "$SRC_DOCKERFILE_PATH" ]]; then
+    DOCKERFILE_PATH="$SRC_DOCKERFILE_PATH"
+    echo "Using Dockerfile from src directory: $DOCKERFILE_PATH"
 elif [[ -f "$DOCKER_DOCKERFILE_PATH" ]]; then
     DOCKERFILE_PATH="$DOCKER_DOCKERFILE_PATH"
     echo "Using Dockerfile from docker directory: $DOCKERFILE_PATH"
 else
-    echo "Error: Dockerfile not found at $SRC_AGENT_DOCKERFILE_PATH, $SRC_SERVICE_DOCKERFILE_PATH, or $DOCKER_DOCKERFILE_PATH"
+    echo "Error: Dockerfile not found at $SRC_DOCKERFILE_PATH or $DOCKER_DOCKERFILE_PATH"
     echo "Available services in docker/:"
     ls -1 docker/ 2>/dev/null | grep -v "^$" || echo "  No services found in docker/ directory"
     echo "Available services in src/agentic_platform/agent/:"
