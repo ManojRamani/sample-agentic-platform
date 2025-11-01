@@ -9,10 +9,9 @@ variable "agent_description" {
   default     = "Custom runtime agent"
 }
 
-variable "image_tag" {
-  description = "Docker image tag"
+variable "image_uri_latest" {
+  description = "Full ECR URI for the Docker image with latest tag"
   type        = string
-  default     = "latest"
 }
 
 variable "network_mode" {

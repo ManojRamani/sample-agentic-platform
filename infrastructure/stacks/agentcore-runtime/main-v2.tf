@@ -6,38 +6,21 @@ locals {
   # Module does: ${random_prefix}_${runtime_name}
   # So we make runtime_name start with a letter to ensure the final result is valid
   sanitized_agent_name = "${replace(var.agent_name, "-", "_")}"
+  
+  # Create unique memory name with suffix
+  memory_name = var.memory_name_suffix != "" ? "${local.sanitized_agent_name}_memory_${var.memory_name_suffix}" : "${local.sanitized_agent_name}_memory"
 }
 
-# # setting ecr repo name and build image parameters
-# resource "aws_ecr_repository" "agent_repo" {
-#   name = "agentic-platform-${var.agent_name}"
-  
-#   image_tag_mutability = "MUTABLE"
-  
-#   image_scanning_configuration {
-#     scan_on_push = true
-#   }
-# }
-
-# # Build and push Docker image using existing build script
-# resource "null_resource" "docker_image" {
-#   depends_on = [aws_ecr_repository.agent_repo]
-
-#   triggers = {
-#     always_run = timestamp()
-#   }
-
-#   provisioner "local-exec" {
-#     working_dir = "../../.."
-#     command = "./deploy/build-container.sh ${var.agent_name}"
-#   }
-# }
+# Reference the existing ECR repository created by the ECR stack
+data "aws_ecr_repository" "existing_agent_repo" {
+  name = "agentic-platform-${var.agent_name}"
+}
 
 module "agentcore-memory" {
   source = "../../modules/agentcore-memory"
 
   # variables
-  memory_name = "${local.sanitized_agent_name}_memory"
+  memory_name = local.memory_name
   expiration_duration = 7
 }
 
@@ -48,11 +31,7 @@ module "agentcore" {
   create_runtime = true
   runtime_name = local.sanitized_agent_name
   runtime_description = var.agent_description
-  
-  # runtime_container_uri = "${aws_ecr_repository.agent_repo.repository_url}:latest"
-  
-  # docker container ECR url passed externally
-  runtime_container_uri = var.image_uri_latest
+  runtime_container_uri = "${data.aws_ecr_repository.existing_agent_repo.repository_url}:latest"
   runtime_network_mode = var.network_mode
   runtime_role_arn = null  # Let module create its own role
   
@@ -67,5 +46,6 @@ module "agentcore" {
   runtime_endpoint_name = "${local.sanitized_agent_name}Endpoint"
   runtime_endpoint_description = "Endpoint for ${var.agent_name} runtime"
   
-  # depends_on = [null_resource.docker_image]
+  # Add dependency to ensure IAM role has time to propagate
+  depends_on = [module.agentcore-memory]
 }
