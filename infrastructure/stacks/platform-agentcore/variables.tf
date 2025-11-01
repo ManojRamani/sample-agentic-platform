@@ -98,6 +98,18 @@ variable "postgres_iam_username" {
   default     = "postgres_iam_user"
 }
 
+variable "postgres_serverless_min_capacity" {
+  description = "Minimum capacity for Aurora Serverless v2 scaling (in ACUs)"
+  type        = number
+  default     = 0.5
+}
+
+variable "postgres_serverless_max_capacity" {
+  description = "Maximum capacity for Aurora Serverless v2 scaling (in ACUs)"
+  type        = number
+  default     = 1
+}
+
 ########################################################
 # Redis Configuration
 ########################################################

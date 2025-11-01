@@ -112,7 +112,7 @@ After the platform stack is deployed, you need to create PostgreSQL users, datab
 # Get the specific Aurora writer endpoint
 
 ```terraform output postgres_cluster_endpoint```
-"agent-ptfm-postgres.cluster-c7guemmykggt.us-west-2.rds.amazonaws.com"
+temp - for agent-core: agentcore-postgres.cluster-c7guemmykggt.us-west-2.rds.amazonaws.com
 
 
 If running from your local machine, you need to port forward through the bastion host:
@@ -129,6 +129,17 @@ aws ssm start-session \
   --target $INSTANCE_ID \
   --document-name AWS-StartPortForwardingSessionToRemoteHost \
   --parameters "portNumber=5432,localPortNumber=5432,host=<aurora-writer-endpoint>"
+
+
+  CORRECTED
+
+POSTGRES_ENDPOINT="agentcore-postgres.cluster-c7guemmykggt.us-west-2.rds.amazonaws.com"
+  # Correct SSM port forwarding command
+aws ssm start-session \
+  --target $INSTANCE_ID \
+  --document-name AWS-StartPortForwardingSessionToRemoteHost \
+  --parameters "{\"host\":[\"$POSTGRES_ENDPOINT\"],\"portNumber\":[\"5432\"],\"localPortNumber\":[\"5432\"]}"
+
 
 # 3. In a new terminal, run the postgres-users stack with local proxy enabled
 cd infrastructure/stacks/postgres-users/

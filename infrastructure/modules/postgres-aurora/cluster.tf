@@ -28,6 +28,12 @@ resource "aws_rds_cluster" "postgres" {
   
   db_cluster_parameter_group_name = aws_rds_cluster_parameter_group.postgres.name
   
+  # Serverless v2 scaling configuration - required when using db.serverless instance class
+  serverlessv2_scaling_configuration {
+    max_capacity = var.serverless_max_capacity
+    min_capacity = var.serverless_min_capacity
+  }
+  
   tags = merge(
     var.common_tags,
     {

@@ -1,0 +1,29 @@
+Outputs:
+
+aws_region = "us-west-2"
+common_tags = {
+  "Environment" = "dev"
+  "ManagedBy" = "Terraform"
+  "Project" = "Agentic Platform Sample"
+  "Suffix" = "xm1"
+}
+default_security_group_id = "sg-0e677967175f525a4"
+environment = "dev"
+internet_gateway_id = "igw-0296771f3b8d51f73"
+name_prefix = "agent-ptfm-ac-"
+nat_gateway_1_id = "nat-0facbb3365e66aaf7"
+nat_gateway_2_id = "nat-0804929d7ea2e261a"
+private_subnet_1_id = "subnet-04c0d9b7ee361d74e"
+private_subnet_2_id = "subnet-079ee00b5b5f36626"
+private_subnet_ids = [
+  "subnet-04c0d9b7ee361d74e",
+  "subnet-079ee00b5b5f36626",
+]
+public_subnet_1_id = "subnet-0d72ef44d86ecd2fa"
+public_subnet_2_id = "subnet-07d98226b6b5927da"
+public_subnet_ids = [
+  "subnet-0d72ef44d86ecd2fa",
+  "subnet-07d98226b6b5927da",
+]
+vpc_cidr_block = "10.0.0.0/16"
+vpc_id = "vpc-03c480212965bf48d"

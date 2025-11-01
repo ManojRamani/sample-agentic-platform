@@ -1,0 +1,15 @@
+# Core Configuration
+########################################################
+
+agent_name        = "agentic_chat_enhanced"
+agent_description = "AgentCore runtime for agentic-chat-enhanced"
+
+# Pass environment variables as needed.
+environment_variables = {
+    "ENVIRONMENT": "local",
+    "LITELLM_API_ENDPOINT": "https://d39czc0wfea9rq.cloudfront.net/frontend/api/litellm",
+    "LITELLM_KEY": "sk-QVsM0UU9k2RMVegCKGx5bG9cewpuLu1bpnKWJIgBrfPER7kS"
+}
+
+# Use a unique memory name to avoid conflicts
+memory_name_suffix = "v2"

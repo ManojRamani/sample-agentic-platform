@@ -5,7 +5,7 @@
 variable "aws_region" {
   description = "AWS region to deploy resources"
   type        = string
-  default     = "us-west-2"
+  default     = "us-east-1"
 }
 
 variable "environment" {
@@ -17,7 +17,7 @@ variable "environment" {
 variable "stack_name" {
   description = "Name of the stack to prefix to resource names"
   type        = string
-  default     = "agent-ptfm-mjramani"
+  default     = "agent-ptfm"
 }
 
 ########################################################

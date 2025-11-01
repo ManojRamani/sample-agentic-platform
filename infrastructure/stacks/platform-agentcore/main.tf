@@ -82,6 +82,10 @@ module "postgres_aurora" {
   postgres_deletion_protection = var.postgres_deletion_protection
   postgres_iam_username        = var.postgres_iam_username
 
+  # Serverless v2 scaling configuration
+  serverless_min_capacity = var.postgres_serverless_min_capacity
+  serverless_max_capacity = var.postgres_serverless_max_capacity
+
   # KMS encryption - passed in as variables
   enable_kms_encryption = var.enable_kms_encryption
   kms_key_arn          = var.kms_key_arn

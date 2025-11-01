@@ -1,0 +1,9 @@
+agent_name = "AGENT-NAME-HERE" #  eg "agentic_chat_enhanced"
+ecr_region = "us-west-2"  # Change this to your desired ECR region
+
+common_tags = {
+  Project     = "agentic-platform"
+  Agent       = "AGENT-NAME-HERE" #  eg "agentic_chat_enhanced"
+  Environment = "shared"
+  ManagedBy   = "terraform"
+}

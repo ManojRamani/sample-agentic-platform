@@ -70,6 +70,18 @@ variable "postgres_deletion_protection" {
   default     = true
 }
 
+variable "serverless_min_capacity" {
+  description = "Minimum capacity for Aurora Serverless v2 scaling (in ACUs)"
+  type        = number
+  default     = 0.5
+}
+
+variable "serverless_max_capacity" {
+  description = "Maximum capacity for Aurora Serverless v2 scaling (in ACUs)"
+  type        = number
+  default     = 1
+}
+
 ########################################################
 # Encryption Variables
 ########################################################

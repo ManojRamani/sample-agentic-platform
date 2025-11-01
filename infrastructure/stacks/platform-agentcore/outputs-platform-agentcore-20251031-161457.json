@@ -1,0 +1,147 @@
+{
+  "aws_region": {
+    "sensitive": false,
+    "type": "string",
+    "value": "us-west-2"
+  },
+  "bastion_instance_id": {
+    "sensitive": false,
+    "type": "string",
+    "value": "i-0e762f67418ecad8c"
+  },
+  "bastion_security_group_id": {
+    "sensitive": false,
+    "type": "string",
+    "value": "sg-08626cb839650132b"
+  },
+  "cloudfront_distribution_id": {
+    "sensitive": false,
+    "type": "string",
+    "value": "E37HYS2AG4A6CL"
+  },
+  "cognito_user_pool_domain": {
+    "sensitive": false,
+    "type": "string",
+    "value": "dev-auth-e08xqovd"
+  },
+  "cognito_user_pool_id": {
+    "sensitive": false,
+    "type": "string",
+    "value": "us-west-2_HlrP8cJEx"
+  },
+  "cognito_web_client_id": {
+    "sensitive": false,
+    "type": "string",
+    "value": "6mitm3jb4vn4fburl1ftm06o6q"
+  },
+  "ecs_cluster_arn": {
+    "sensitive": false,
+    "type": "string",
+    "value": "arn:aws:ecs:us-west-2:423623854297:cluster/agentcore-agentcore-cluster"
+  },
+  "ecs_cluster_name": {
+    "sensitive": false,
+    "type": "string",
+    "value": "agentcore-agentcore-cluster"
+  },
+  "environment": {
+    "sensitive": false,
+    "type": "string",
+    "value": "dev"
+  },
+  "litellm_load_balancer_dns": {
+    "sensitive": false,
+    "type": "string",
+    "value": "internal-agentcore-litellm-alb-1772264620.us-west-2.elb.amazonaws.com"
+  },
+  "litellm_load_balancer_url": {
+    "sensitive": false,
+    "type": "string",
+    "value": "http://internal-agentcore-litellm-alb-1772264620.us-west-2.elb.amazonaws.com"
+  },
+  "litellm_secret_arn": {
+    "sensitive": false,
+    "type": "string",
+    "value": "arn:aws:secretsmanager:us-west-2:423623854297:secret:agentcore-litellm-secret-K97cuq"
+  },
+  "litellm_secret_name": {
+    "sensitive": false,
+    "type": "string",
+    "value": "agentcore-litellm-secret"
+  },
+  "litellm_service_arn": {
+    "sensitive": false,
+    "type": "string",
+    "value": "arn:aws:ecs:us-west-2:423623854297:service/agentcore-agentcore-cluster/agentcore-litellm-service"
+  },
+  "litellm_service_name": {
+    "sensitive": false,
+    "type": "string",
+    "value": "agentcore-litellm-service"
+  },
+  "parameter_store_arn": {
+    "sensitive": false,
+    "type": "string",
+    "value": "arn:aws:ssm:us-west-2:423623854297:parameter/agentic-platform/config/agentcore-dev"
+  },
+  "parameter_store_configuration_json": {
+    "sensitive": true,
+    "type": "string",
+    "value": "{\"AGENT_LITELLM_SECRET_ARN\":\"arn:aws:secretsmanager:us-west-2:423623854297:secret:agentcore-agent-secret-cbhvQr\",\"AGENT_LITELLM_SECRET_NAME\":\"agentcore-agent-secret\",\"ALB_SECURITY_GROUP_ID\":\"sg-0ea91541a4db5b4eb\",\"AWS_ACCOUNT_ID\":\"423623854297\",\"AWS_DEFAULT_REGION\":\"us-west-2\",\"BASTION_INSTANCE_ID\":\"i-0e762f67418ecad8c\",\"BASTION_PRIVATE_IP\":\"10.0.11.11\",\"COGNITO_DOMAIN\":\"https://dev-auth-e08xqovd.auth.us-west-2.amazoncognito.com\",\"COGNITO_IDENTITY_POOL_ID\":null,\"COGNITO_M2M_CLIENT_ID\":\"72gcojle71n9agrkbdfva40g6q\",\"COGNITO_PLATFORM_ADMIN_GROUP_NAME\":\"platform_admin\",\"COGNITO_PLATFORM_USER_GROUP_NAME\":\"platform_user\",\"COGNITO_SUPER_ADMIN_GROUP_NAME\":\"super_admin\",\"COGNITO_USER_CLIENT_ID\":\"6mitm3jb4vn4fburl1ftm06o6q\",\"COGNITO_USER_POOL_ARN\":\"arn:aws:cognito-idp:us-west-2:423623854297:userpool/us-west-2_HlrP8cJEx\",\"COGNITO_USER_POOL_ID\":\"us-west-2_HlrP8cJEx\",\"ECS_CLUSTER_ARN\":\"arn:aws:ecs:us-west-2:423623854297:cluster/agentcore-agentcore-cluster\",\"ECS_CLUSTER_NAME\":\"agentcore-agentcore-cluster\",\"ECS_SECURITY_GROUP_ID\":\"sg-0fd857e7f470409d2\",\"ECS_SERVICE_ARN\":\"arn:aws:ecs:us-west-2:423623854297:service/agentcore-agentcore-cluster/agentcore-litellm-service\",\"ECS_SERVICE_NAME\":\"agentcore-litellm-service\",\"ECS_TASK_EXECUTION_ROLE_ARN\":\"arn:aws:iam::423623854297:role/agentcore-litellm-task-execution-role\",\"ECS_TASK_ROLE_ARN\":\"arn:aws:iam::423623854297:role/agentcore-litellm-task-role\",\"ENVIRONMENT\":\"dev\",\"KMS_KEY_ARN\":null,\"KMS_KEY_ID\":null,\"LITELLM_CONFIG_SECRET_ARN\":\"arn:aws:secretsmanager:us-west-2:423623854297:secret:agentcore-litellm-secret-K97cuq\",\"LITELLM_LOAD_BALANCER_DNS\":\"internal-agentcore-litellm-alb-1772264620.us-west-2.elb.amazonaws.com\",\"LITELLM_SECRET_NAME\":\"agentcore-litellm-secret\",\"LITELLM_URL\":\"http://internal-agentcore-litellm-alb-1772264620.us-west-2.elb.amazonaws.com\",\"LOG_GROUP_NAME\":\"/ecs/agentcore-litellm\",\"M2M_CREDENTIALS_SECRET_ARN\":\"arn:aws:secretsmanager:us-west-2:423623854297:secret:agentcore-m2mcreds-e08xqovd-n9dJoq\",\"OAUTH_TOKEN_ENDPOINT\":\"https://dev-auth-e08xqovd.auth.us-west-2.amazoncognito.com/oauth2/token\",\"PG_DATABASE\":\"postgres\",\"PG_PASSWORD_SECRET_ARN\":\"arn:aws:secretsmanager:us-west-2:423623854297:secret:rds!cluster-710faf64-6e82-4b3f-8ce2-99801e259cc4-bcMOA7\",\"PG_PORT\":5432,\"PG_READER_ENDPOINT\":\"agentcore-postgres.cluster-ro-c7guemmykggt.us-west-2.rds.amazonaws.com\",\"PG_READ_ONLY_USER\":\"postgres_iam_user\",\"PG_USER\":\"postgres_iam_user\",\"PG_WRITER_ENDPOINT\":\"agentcore-postgres.cluster-c7guemmykggt.us-west-2.rds.amazonaws.com\",\"POSTGRES_BACKUP_VAULT_NAME\":\"agentcore-pg-vault\",\"POSTGRES_CLUSTER_ID\":\"agentcore-postgres\",\"POSTGRES_MASTER_USERNAME\":\"postgres\",\"POSTGRES_PARAMETER_GROUP_NAME\":\"agentcore-postgres-params\",\"POSTGRES_SECURITY_GROUP_ID\":\"sg-0c796f391af6f7329\",\"POSTGRES_SNS_TOPIC_ARN\":\"arn:aws:sns:us-west-2:423623854297:agentcore-postgres-events\",\"REDIS_HOST\":\"master.agentcore-redis.7dadwf.usw2.cache.amazonaws.com\",\"REDIS_PASSWORD_SECRET_ARN\":\"arn:aws:secretsmanager:us-west-2:423623854297:secret:agentcore-redis-auth-xum-fqqKJA\",\"REDIS_PORT\":6379,\"REGION\":\"us-west-2\",\"SPA_DISTRIBUTION_ARN\":\"arn:aws:cloudfront::423623854297:distribution/E37HYS2AG4A6CL\",\"SPA_DISTRIBUTION_ID\":\"E37HYS2AG4A6CL\",\"SPA_DOMAIN_NAME\":\"d39czc0wfea9rq.cloudfront.net\",\"SPA_WEBSITE_BUCKET_ARN\":\"arn:aws:s3:::terraform-20251031210335123700000006\",\"SPA_WEBSITE_BUCKET_NAME\":\"terraform-20251031210335123700000006\",\"SPA_WEBSITE_URL\":\"https://d39czc0wfea9rq.cloudfront.net/frontend\",\"TARGET_GROUP_ARN\":\"arn:aws:elasticloadbalancing:us-west-2:423623854297:targetgroup/agentcore-litellm-tg/593a6a333c01223c\",\"VPC_ID\":\"vpc-03c480212965bf48d\"}"
+  },
+  "parameter_store_name": {
+    "sensitive": false,
+    "type": "string",
+    "value": "/agentic-platform/config/agentcore-dev"
+  },
+  "postgres_cluster_endpoint": {
+    "sensitive": false,
+    "type": "string",
+    "value": "agentcore-postgres.cluster-c7guemmykggt.us-west-2.rds.amazonaws.com"
+  },
+  "postgres_cluster_id": {
+    "sensitive": false,
+    "type": "string",
+    "value": "agentcore-postgres"
+  },
+  "postgres_cluster_port": {
+    "sensitive": false,
+    "type": "number",
+    "value": 5432
+  },
+  "postgres_master_user_secret_arn": {
+    "sensitive": false,
+    "type": "string",
+    "value": "arn:aws:secretsmanager:us-west-2:423623854297:secret:rds!cluster-710faf64-6e82-4b3f-8ce2-99801e259cc4-bcMOA7"
+  },
+  "redis_auth_secret_arn": {
+    "sensitive": false,
+    "type": "string",
+    "value": "arn:aws:secretsmanager:us-west-2:423623854297:secret:agentcore-redis-auth-xum-fqqKJA"
+  },
+  "redis_cluster_arn": {
+    "sensitive": false,
+    "type": "string",
+    "value": "arn:aws:elasticache:us-west-2:423623854297:replicationgroup:agentcore-redis"
+  },
+  "redis_primary_endpoint": {
+    "sensitive": false,
+    "type": "string",
+    "value": "master.agentcore-redis.7dadwf.usw2.cache.amazonaws.com"
+  },
+  "spa_website_bucket_name": {
+    "sensitive": false,
+    "type": "string",
+    "value": "terraform-20251031210335123700000006"
+  },
+  "spa_website_url": {
+    "sensitive": false,
+    "type": "string",
+    "value": "https://d39czc0wfea9rq.cloudfront.net/frontend"
+  },
+  "vpc_id": {
+    "sensitive": false,
+    "type": "string",
+    "value": "vpc-03c480212965bf48d"
+  }
+}

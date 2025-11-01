@@ -69,7 +69,14 @@ terraform {
 Each agent uses a separate workspace for isolated state management:
 
 ```bash
+
 # Deploy agentic-chat agent
+
+terraform workspace select agentic_chat || terraform workspace new agentic_chat
+terraform plan -var-file="agentic_chat.tfvars"
+terraform apply -var-file="agentic_chat.tfvars"
+
+# Deploy agentic-rag agent
 terraform workspace select agentic_rag || terraform workspace new agentic_rag
 terraform plan -var-file="agentic_rag.tfvars"
 terraform apply -var-file="agentic_rag.tfvars"

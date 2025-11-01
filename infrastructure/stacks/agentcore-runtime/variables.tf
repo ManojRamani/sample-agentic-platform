@@ -47,3 +47,9 @@ variable "authorizer_configuration" {
   type        = any
   default     = null
 }
+
+variable "memory_name_suffix" {
+  description = "Suffix for memory name to avoid conflicts"
+  type        = string
+  default     = ""
+}
