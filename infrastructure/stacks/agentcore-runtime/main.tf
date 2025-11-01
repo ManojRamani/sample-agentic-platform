@@ -8,31 +8,6 @@ locals {
   sanitized_agent_name = "${replace(var.agent_name, "-", "_")}"
 }
 
-# # setting ecr repo name and build image parameters
-# resource "aws_ecr_repository" "agent_repo" {
-#   name = "agentic-platform-${var.agent_name}"
-  
-#   image_tag_mutability = "MUTABLE"
-  
-#   image_scanning_configuration {
-#     scan_on_push = true
-#   }
-# }
-
-# # Build and push Docker image using existing build script
-# resource "null_resource" "docker_image" {
-#   depends_on = [aws_ecr_repository.agent_repo]
-
-#   triggers = {
-#     always_run = timestamp()
-#   }
-
-#   provisioner "local-exec" {
-#     working_dir = "../../.."
-#     command = "./deploy/build-container.sh ${var.agent_name}"
-#   }
-# }
-
 module "agentcore-memory" {
   source = "../../modules/agentcore-memory"
 
@@ -65,7 +40,6 @@ module "agentcore" {
   # Enable Agent Core Runtime Endpoint
   create_runtime_endpoint = var.create_endpoint
   runtime_endpoint_name = "${local.sanitized_agent_name}Endpoint"
-  runtime_endpoint_description = "Endpoint for ${var.agent_name} runtime"
-  
-  # depends_on = [null_resource.docker_image]
+  runtime_endpoint_description = "Endpoint for ${var.agent_name} runtime" 
+
 }
