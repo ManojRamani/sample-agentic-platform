@@ -24,8 +24,6 @@ module "agentcore" {
   runtime_name = local.sanitized_agent_name
   runtime_description = var.agent_description
   
-  # runtime_container_uri = "${aws_ecr_repository.agent_repo.repository_url}:latest"
-  
   # docker container ECR url passed externally
   runtime_container_uri = var.image_uri_latest
   runtime_network_mode = var.network_mode
