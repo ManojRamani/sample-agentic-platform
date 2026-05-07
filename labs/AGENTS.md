@@ -5,6 +5,7 @@
 **Labs are for learning only. Ignore for platform changes.**
 
 The `labs/` directory contains Jupyter notebooks for educational purposes. They:
+
 - Import code from `src/agentic_platform/` (packaged via `uv`)
 - Do NOT contribute code to the platform
 - Can be ignored when making platform-level changes
@@ -12,18 +13,20 @@ The `labs/` directory contains Jupyter notebooks for educational purposes. They:
 ## When to Modify Labs
 
 Only modify labs when:
+
 - User explicitly asks to update a lab/notebook
 - Fixing a broken import after `src/` changes
 - Adding new educational content
 
 **Do NOT modify labs for:**
+
 - Platform feature development
 - Bug fixes in platform code
 - Infrastructure changes
 
 ## Structure
 
-```
+```text
 labs/
 ├── module1/          # Prompt Engineering & Evaluation
 │   └── notebooks/    # Jupyter notebooks
@@ -70,12 +73,12 @@ When `src/` code changes break lab imports:
 
 ## Module Overview
 
-| Module | Topic | Platform Required |
-|--------|-------|-------------------|
-| 1 | Prompt Engineering & Evaluation | No |
-| 2 | Common Agentic Patterns | No |
-| 3 | Building Agentic Applications | No |
-| 4 | Multi-Agent Systems & MCP | No |
-| 5 | Deployment and Infrastructure | Yes |
+| Module | Topic                           | Platform Required |
+| ------ | ------------------------------- | ----------------- |
+| 1      | Prompt Engineering & Evaluation | No                |
+| 2      | Common Agentic Patterns         | No                |
+| 3      | Building Agentic Applications   | No                |
+| 4      | Multi-Agent Systems & MCP       | No                |
+| 5      | Deployment and Infrastructure   | Yes               |
 
 Only Module 5 requires the deployed platform infrastructure.
