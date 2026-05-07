@@ -15,6 +15,7 @@ In this hands-on workshop, you'll:
 - 🧩 Implement evaluator-optimizer patterns for continuous improvement
 
 ## 📋 Prerequisites
+
 We highly recommend you start at module 1. Setup instructions can be found in the main readme.
 
 ## 📚 Workshop Notebooks
@@ -22,35 +23,40 @@ We highly recommend you start at module 1. Setup instructions can be found in th
 The workshop consists of 6 notebooks that build upon each other:
 
 ### 1. Setup and Basics (`1_setup.ipynb`)
+
 - 🔧 Setting up the environment
 - 💾 Creating ChromaDB vector store
 - 🚀 Downloading and processing data
 
 ### 2. Prompt Chaining (`2_prompt_chaining.ipynb`)
+
 - 📊 Breaking down complex tasks
 - 🔄 Implementing sequential processing
 - 💾 Building clear information flows
 
 ### 3. Routing (`3_routing.ipynb`)
+
 - 🧠 Creating intelligent classifiers
 - 🔀 Implementing specialized handlers
 - 📈 Building dynamic routing logic
 
 ### 4. Parallelization (`4_parallelization.ipynb`)
+
 - 🚀 Running multiple tasks simultaneously
 - ⚡ Implementing async processing
 - 📊 Optimizing resource usage
 
 ### 5. Orchestrator Pattern (`5_orchestrator.ipynb`)
+
 - 🎮 Coordinating complex workflows
 - 🧩 Implementing dynamic task execution
 - 🔍 Building flexible diagnostic systems
 
 ### 6. Evaluator-Optimizer Pattern (`6_evaluator_optimizer.ipynb`)
+
 - 📈 Implementing answer improvement systems
 - ✅ Creating quality evaluation logic
 - 🔄 Building iterative refinement loops
-
 
 ## 🧭 Workshop Flow
 
@@ -60,6 +66,7 @@ The workshop consists of 6 notebooks that build upon each other:
 4. Review the example solutions provided
 
 Each notebook includes:
+
 - Clear explanations of concepts
 - Step-by-step instructions
 - Code examples you can run
@@ -70,26 +77,31 @@ Each notebook includes:
 ### Common Issues & Solutions
 
 #### Authentication Error
+
 - Check AWS credentials are properly configured
 - Verify IAM role has bedrock:InvokeModel permission
 - Ensure region matches your Bedrock endpoint
 
 #### ChromaDB Issues
+
 - Verify data directory exists
 - Check disk space availability
 - Ensure proper permissions for the directory
 
 #### LangGraph Workflow Error
+
 - Ensure all node functions have correct signatures
 - Verify state model matches workflow requirements
 - Check for proper type hints
 
 #### Memory Issues
+
 - Reduce batch sizes in parallel processing
 - Implement pagination for large document sets
 - Consider using a larger instance if in a cloud environment
 
 #### Type Validation Error
+
 - Check input data matches Pydantic models
 - Verify all required fields are provided
 - Ensure proper type conversions

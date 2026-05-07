@@ -30,30 +30,34 @@ Before starting this workshop, you'll need:
 The workshop consists of several notebooks that build foundational abstractions:
 
 ### 1. Setup and Environment (`1_setup.ipynb`)
+
 - 🔧 Setting up the development environment
 - 💾 Configuring vector stores and LLM clients
 - 🚀 Preparing test data for agent interactions
 
 ### 2. Agent Memory Systems (`2_agent_memory.ipynb`)
+
 - 💾 Building abstract memory interfaces
 - 🧠 Implementing different memory strategies
 - 📈 Creating pluggable memory backends
 
 ### 3. Agent Tools & Actions (`3_agent_tools.ipynb`)
+
 - 🛠️ Designing flexible tool interfaces
 - 🔌 Creating pluggable tool registries
 - 🎯 Implementing tool validation and safety checks
 
 ### 4. Agent Retrieval Systems (`4_agent_retrieval.ipynb`)
+
 - 🔍 Building abstract retrieval interfaces
 - 📚 Implementing different retrieval strategies
 - 🔄 Creating composable retrieval pipelines
 
 ### 5. Framework Comparisons (WIP) (`6_agent_frameworks.ipynb`)
+
 - 📊 Analyzing different agent frameworks
 - 🔍 Understanding framework tradeoffs
 - 🔄 Migrating agents between frameworks
-
 
 ## 🧭 Workshop Flow
 
@@ -64,6 +68,7 @@ The workshop consists of several notebooks that build foundational abstractions:
 5. Complete the exercises to reinforce understanding of the patterns
 
 Each notebook includes:
+
 - Detailed explanations of core patterns and abstractions
 - Clean interface definitions
 - Reference implementations
