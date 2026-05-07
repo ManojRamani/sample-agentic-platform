@@ -1,16 +1,17 @@
 # Module 4: Advanced Agent Features
 
 ## Overview
+
 This module explores advanced agent capabilities through Model Context Protocol (MCP) and multi-agent systems. You'll learn how to combine different agent frameworks, create specialized tool servers, and build interoperable AI systems that can collaborate effectively.
 
 ## Learning Objectives
 
-* Create and deploy MCP-compatible tool servers
-* Connect agents to multiple MCP servers simultaneously
-* Mix and match different agent frameworks (PydanticAI, LangChain, etc.)
-* Build collaborative multi-agent systems
-* Integrate third-party MCP servers into your applications
-* Interact with web applications using Amazon Bedrock AgentCore Brower Tool
+- Create and deploy MCP-compatible tool servers
+- Connect agents to multiple MCP servers simultaneously
+- Mix and match different agent frameworks (PydanticAI, LangChain, etc.)
+- Build collaborative multi-agent systems
+- Integrate third-party MCP servers into your applications
+- Interact with web applications using Amazon Bedrock AgentCore Browser Tool
 
 ## Prerequisites
 
@@ -53,12 +54,12 @@ NOVA_ACT_API_KEY=your-nova-act-key-here
 ### Getting API Keys
 
 1. **Tavily API Key**
-   - Sign up at: https://tavily.com
+   - Sign up at: <https://tavily.com>
    - Navigate to your dashboard to get your API key
    - Used in: Multi-agent delegation labs for web search capabilities
 
 2. **Nova Act API Key**
-   - Request access at: https://nova.amazon.com/dev-apis
+   - Request access at: <https://nova.amazon.com/dev-apis>
    - Used in: Amazon Bedrock AgentCore browser tool labs
    - Enables automated browser interactions and web scraping
 
