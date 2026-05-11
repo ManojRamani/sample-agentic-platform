@@ -205,3 +205,6 @@ memory-bank/
 
 # Claude Code session artifacts
 .claude/scheduled_tasks.lock
+
+# Labs local docs (not for version control)
+labs/docs-ignore/
